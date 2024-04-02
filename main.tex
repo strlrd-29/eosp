@@ -1,5 +1,6 @@
 \documentclass[12pt, a4paper]{article}
 \usepackage{graphicx}
+\graphicspath{{assets/}}
 
 \title{My first LaTex document}
 \author{Ghribi Ouassim Abdelmalek\thanks{Hello there}}
@@ -22,4 +23,15 @@ were made by accident.
 
 \textbf{Some of the greatest \emph{discoveries}
     in science were made by accident.}
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{alena-aenami-7p-m}
+    \caption{Hello world}
+    \label{fig:test-1}
+\end{figure}
+
+As you can see in figure \ref{fig:test-1} on page \pageref{fig:test-1}
+
 \end{document}
