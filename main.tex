@@ -1,100 +1,55 @@
-\documentclass[10pt, a4paper]{article}
-\usepackage{graphicx}
-\graphicspath{{assets/}}
-\usepackage{amsmath}
-
-\title{My firstss LaTex document}
-\author{Ghribi Ouassim Abdelmalek\thanks{Hello there}}
-\date{April 2024}
+\documentclass{book}
 \begin{document}
-\maketitle
-First document. This is a simple example, with no
-extra parameters or packages included.
-% This is a comment and should not appear
 
-Some of the \textbf{greatest}
-discoveries in \underline{science}
-were made by \textbf{\textit{accident}}.
+\chapter{First Chapter}
 
-Some of the greatest \emph{discoveries} in science
-were made by accident.
+\section{Introduction}
 
-\textit{Some of the greatest \emph{discoveries}
-    in science were made by accident.}
+This is the first section.
 
-\textbf{Some of the greatest \emph{discoveries}
-    in science were made by accident.}
+Lorem  ipsum  dolor  sit  amet,  consectetuer  adipiscing
+elit. Etiam  lobortisfacilisis sem.  Nullam nec mi et
+neque pharetra sollicitudin.  Praesent imperdietmi nec ante.
+Donec ullamcorper, felis non sodales...
 
+\section{Second Section}
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.75\textwidth]{alena-aenami-7p-m}
-    \caption{Hello world}
-    \label{fig:test-1}
-\end{figure}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra
+sollicitudin.  Praesent imperdiet mi necante...
 
-As you can see in figure \ref{fig:test-1} on page \pageref{fig:test-1}
+\subsection{First Subsection}
+Praesent imperdietmi nec ante. Donec ullamcorper, felis non sodales...
 
-\begin{itemize}
-    \item First item
-    \item Second item
-\end{itemize}
+\section*{Unnumbered Section}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Etiam lobortis facilisissem...
 
-\begin{enumerate}
-    \item First enumerated item
-    \item Second enumerated item
-\end{enumerate}
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        cell1 & cell2 & cell3 \\
+        cell4 & cell5 & cell6 \\
+        cell7 & cell8 & cell9 \\
+        \hline
+    \end{tabular}
+\end{center}
 
-In physics, the mass-energy equivalence is stated
-by the equation $E=mc^2$, discovered in 1905 by Albert Einstein.
-
-The mass-energy equivalence is described by the famous equation
-\[ E=mc^2 \] discovered in 1905 by Albert Einstein.
-
-In natural units ($c = 1$), the formula expresses the identity
-\begin{equation}
-    E=m
-\end{equation}
-
-Subscripts in math mode are written as $a_b$ and superscripts are written as $a^b$. These can be combined and nested to write expressions such as
-
-\[ T^{i_1 i_2 \dots i_p}_{j_1 j_2 \dots j_q} = T(x^{i_1},\dots,x^{i_p},e_{j_1},\dots,e_{j_q}) \]
-
-We write integrals using $\int$ and fractions using $\frac{a}{b}$. Limits are placed on integrals using superscripts and subscripts:
-
-\[ \int_0^1 \frac{dx}{e^x} =  \frac{e-1}{e} \]
-
-Lower case Greek letters are written as $\omega$ $\delta$ etc. while upper case Greek letters are written as $\Omega$ $\Delta$.
-
-Mathematical operators are prefixed with a backslash as $\sin(\beta)$, $\cos(\alpha)$, $\log(x)$ etc.
-
-\section{First example}
-
-The well-known Pythagorean theorem \(x^2 + y^2 = z^2\) was proved to be invalid for other exponents, meaning the next equation has no integer solutions for \(n>2\):
-
-\[ x^n + y^n = z^n \]
-
-\section{Second example}
-
-This is a simple math expression \(\sqrt{x^2+1}\) inside text.
-And this is also the same:
-\begin{math}
-    \sqrt{x^2+1}
-\end{math}
-but by using another command.
-
-This is a simple math expression without numbering
-\[\sqrt{x^2+1}\]
-separated from text.
-
-This is also the same:
-\begin{displaymath}
-    \sqrt{x^2+1}
-\end{displaymath}
-
-\ldots and this:
-\begin{equation*}
-    \sqrt{x^2+1}
-\end{equation*}
-
+\begin{center}
+    \begin{tabular}{||c | c | c | c||}
+        \hline
+        Col1 & Col2 & Col2  & Col3 \\ [0.5ex]
+        \hline\hline
+        1    & 6    & 87837 & 787  \\
+        \hline
+        2    & 7    & 78    & 5415 \\
+        \hline
+        3    & 545  & 778   & 7507 \\
+        \hline
+        4    & 545  & 18744 & 7560 \\
+        \hline
+        5    & 88   & 788   & 6344 \\ [1ex]
+        \hline
+    \end{tabular}
+\end{center}
 \end{document}
