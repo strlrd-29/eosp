@@ -52,7 +52,7 @@
 %%   Grave accent  \`     Left brace    \{     Vertical bar  \|
 %%   Right brace   \}     Tilde         \~}
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
-\ProvidesClass{ThesisStyle}
+\ProvidesClass{thesis-style}
 [2004/02/16 v1.4f
     Standard LaTeX document class]
 \newcommand\@ptsize{}
