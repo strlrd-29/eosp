@@ -30,5 +30,45 @@
 \include{acknowledgements/aknowledgements}
 \include{title/separator}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  Abstract  %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\addcontentsline{toc}{section}{Abstract}
+\markboth{Abstract}{Abstract}
+\chapter*{Abstract}
+\input{abstract/abstract}
+
+\addcontentsline{toc}{section}{Contents}
+\markboth{Contents}{Contents}
+
+\tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  List of Figures  %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\let\cleardoublepage\clearpage
+\addcontentsline{toc}{section}{List of Figures}
+\listoffigures
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  List of Tables  %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\addcontentsline{toc}{section}{List of Tables}
+\listoftables
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  List of Listings  %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\addcontentsline{toc}{section}{List of Listings}
+\lstlistoflistings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  Acronyms  %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\addcontentsline{toc}{section}{Acronyms}
+\markboth{Acronyms}{Acronyms}
+\include{acronyms/acronyms}
+\mainmatter
+
 
 \end{document}
