@@ -1,21 +1,21 @@
-\documentclass[a4paper]{memoir}
+\documentclass[a4paper, 11pt, twoside]{thesis-style}
 
-\usepackage{kantlipsum}
+\usepackage{utils/definitions}
+\usepackage{utils/includes}
 
-\title{Working Title}
-\author{Ghribi Ouassim Abdelmalek}
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\UrlOrds}
+\makeatother
 
-\includeonly
-{
-    sections/abstract,
-}
+\setstretch{1.15}
+\setlength{\parindent}{0.2in}
 
 \begin{document}
 
-\begin{titlingpage}
-    \maketitle
-\end{titlingpage}
+\include{title/title}
+\vspace{3cm}
 
-\include{sections/abstract}
+\pagenumbering{roman}
 
+hello worlds
 \end{document}
