@@ -19,7 +19,7 @@ RUN apt-get update && apt-get -y upgrade \
     texlive-extra-utils \
     texlive-latex-extra \
     texlive-science \
-    biber chktex latexmk make python3-pygments python3-pkg-resources
+    biber chktex latexmk make python3-pygments python3-pkg-resources aspell aspell-en
 
 # latexindent modules
 RUN apt-get install --no-install-recommends -y curl
