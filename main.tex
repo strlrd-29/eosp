@@ -10,7 +10,13 @@
 \setstretch{1.15}
 \setlength{\parindent}{0.2in}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography Definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addbibresource{bibliography.bib} %Import the bibliography file
+
 \begin{document}
+
 
 \include{title/title}
 \vspace{3cm}
@@ -72,6 +78,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \include{introduction/introduction}
 \clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  Bibliography %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\printbibliography %Prints bibliography
 
 
 \end{document}
