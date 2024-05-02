@@ -17,7 +17,16 @@ In summary, this chapter serves as a comprehensive guide to RAG systems, offerin
 
 \subsection{Definition}
 
-Machine learning (ML) is a specialized field within artificial intelligence (AI) dedicated to the development and analysis of statistical algorithms capable of learning from data and making predictions without explicit programming. In recent years, artificial neural networks (ANNs) have emerged as particularly powerful tools, showcasing superior performance compared to traditional methods. ML boasts a wide range of applications spanning various domains, including natural language processing, computer vision, speech recognition, email filtering, agriculture, and medicine. In business contexts, ML is commonly known as predictive analytics. While not all ML methods rely on statistical principles, computational statistics significantly influences the methodologies employed in the field \cite{enwiki:1220758567}.
+
+Machine Learning, often abbreviated as ML, is a subset of artificial intelligence (AI) that focuses on the development of computer algorithms that improve automatically through experience and by the use of data. In simpler terms, machine learning enables computers to learn from data and make decisions or predictions without being explicitly programmed to do so.
+
+At its core, machine learning is all about creating and implementing algorithms that facilitate these decisions and predictions. These algorithms are designed to improve their performance over time, becoming more accurate and effective as they process more data.
+
+In traditional programming, a computer follows a set of predefined instructions to perform a task. However, in machine learning, the computer is given a set of examples (data) and a task to perform, but it's up to the computer to figure out how to accomplish the task based on the examples it's given.
+
+For instance, if we want a computer to recognize images of cats, we don't provide it with specific instructions on what a cat looks like. Instead, we give it thousands of images of cats and let the machine learning algorithm figure out the common patterns and features that define a cat. Over time, as the algorithm processes more images, it gets better at recognizing cats, even when presented with images it has never seen before.
+
+This ability to learn from data and improve over time makes machine learning incredibly powerful and versatile. It's the driving force behind many of the technological advancements we see today, from voice assistants and recommendation systems to self-driving cars and predictive analytics \cite{datacamp:ml}.
 
 \subsection{Relationships to other fields}
 
@@ -27,7 +36,7 @@ Artificial Intelligence (AI) encompasses the field of computer science dedicated
     \centering
     \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{ml.png}
     \caption{
-        Machine learning as subfield of AI, from \cite{enwiki:1220758567}.
+        Machine learning as subfield of AI, from \cite{datacamp:ml}.
     }
 \end{figure}
 
@@ -37,7 +46,7 @@ Machine Learning can be broadly categorized into several types based on the lear
 
 \begin{figure}[htpb]
     \centering
-    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{ml-types.pdf}
+    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{ml-types.png}
     \caption{
         Types of machine Learning.
     }
@@ -91,9 +100,10 @@ Although machine learning is a powerful technique for extracting knowledge from 
 
 \subsection{Definition}
 
-Deep learning encompasses machine learning techniques that utilize artificial neural networks (ANNs) with representation learning. The term "deep" denotes the use of multiple layers within the network architecture. These methods can be supervised, semi-supervised, or unsupervised, depending on the learning approach employed.
+Deep learning is a type of machine learning that teaches computers to perform tasks by learning from examples, much like humans do. Imagine teaching a computer to recognize cats: instead of telling it to look for whiskers, ears, and a tail, you show it thousands of pictures of cats. The computer finds the common patterns all by itself and learns how to identify a cat. This is the essence of deep learning.
 
-Architectures such as deep neural networks, deep belief networks, recurrent neural networks, convolutional neural networks, and transformers are prominent examples of deep learning models. These models have found applications in diverse fields, including computer vision, speech recognition, natural language processing, machine translation, bioinformatics, drug design, medical image analysis, climate science, material inspection, and board game programs. In many cases, deep learning approaches have achieved results comparable to, and sometimes surpassing, human expert performance \cite{enwiki:1220437155}.
+In technical terms, deep learning uses something called "neural networks," which are inspired by the human brain. These networks consist of layers of interconnected nodes that process information. The more layers, the "deeper" the network, allowing it to learn more complex features and perform more sophisticated tasks \cite{datacamp:dl}.
+
 
 \subsection{Deep Learning vs. Machine Learning}
 
@@ -119,25 +129,60 @@ Deep learning has a wide range of applications across various domains due to its
     \item Applications include virtual assistants, language translation services, social media sentiment analysis, and customer support chatbots.
 \end{itemize}
 
-\subsubsection*{Speech Recognition and Synthesis:}
-
-\begin{itemize}
-    \item Deep learning is utilized for speech recognition, speech-to-text conversion, and text-to-speech synthesis.
-    \item Applications include voice assistants, speech-to-text transcription services, voice-controlled devices, and interactive voice response systems.
-\end{itemize}
-
-\subsubsection*{Recommendation Systems:}
-
-\begin{itemize}
-    \item Deep learning is used to build personalized recommendation systems that analyze user preferences and behavior to suggest relevant products, content, or services.
-    \item Applications include movie or music recommendation platforms, personalized advertising, and e-commerce product recommendations.
-\end{itemize}
-
-\subsubsection*{Autonomous Vehicles:}
-
-\begin{itemize}
-    \item Deep learning plays a crucial role in enabling autonomous vehicles to perceive and navigate their environment.
-    \item Applications include object detection, lane detection, traffic sign recognition, and path planning for self-driving cars.
-\end{itemize}
 
 These are just a few examples of the diverse applications of deep learning, demonstrating its versatility and impact across various industries and fields.
+
+\clearpage
+
+\section{Natural Language Processing (NLP)}
+
+Natural Language Processing (NLP) serves as a crucial technology within artificial intelligence, facilitating communication between humans and computers. It represents a multidisciplinary field empowering machines to comprehend, analyze, and produce human language, thus facilitating seamless human-machine interaction. The importance of NLP manifests in its diverse applications, spanning automated customer support to instantaneous language translation, showcasing its pivotal role in modern computing.
+
+\subsection{What is Natural Language Processing?}
+
+NLP emerges as a vital component within artificial intelligence, dedicated to facilitating communication between computers and humans via natural language. Its core objective lies in programming computers to effectively process and analyze extensive volumes of natural language data.
+
+NLP encompasses the task of enabling machines to comprehend, interpret, and generate human language in a manner that is not only valuable but also meaningful. OpenAI, renowned for pioneering sophisticated language models such as ChatGPT, underscores the significance of NLP in fostering the development of intelligent systems capable of comprehending, responding to, and generating text. This advancement in technology serves to enhance user-friendliness and accessibility across various applications.
+
+\subsection{How Does NLP Work?}
+
+NLP is a fascinating field that delves into the intricate mechanisms underlying human language comprehension and generation by machines. This section aims to unravel the complexities of NLP, shedding light on the fundamental principles and techniques that drive its functionality. By exploring the inner workings of NLP, we gain insight into how machines process and analyze natural language data, paving the way for groundbreaking applications in artificial intelligence and human-computer interaction. Through this exploration, we embark on a journey to discover the algorithms, models, and methodologies that empower machines to navigate the vast landscape of human language with precision and sophistication.
+
+\subsubsection*{Components of NLP}
+
+Natural Language Processing is not a monolithic, singular approach, but rather, it is composed of several components, each contributing to the overall understanding of language. The main components that NLP strives to understand are Syntax, Semantics, Pragmatics, and Discourse.
+
+\begin{itemize}
+    \item \textbf{Syntax:} Syntax pertains to the arrangement of words and phrases to create well-structured sentences in a language.
+    \item \textbf{Semantics:} Semantics is concerned with understanding the meaning of words and how they create meaning when combined in sentences.
+    \item \textbf{Pragmatics:} Pragmatics deals with understanding language in various contexts, ensuring that the intended meaning is derived based on the situation, speaker's intent, and shared knowledge.
+    \item \textbf{Discourse:} Discourse focuses on the analysis and interpretation of language beyond the sentence level, considering how sentences relate to each other in texts and conversations.
+\end{itemize}
+
+\subsubsection*{NLP techniques and methods}
+
+NLP employs a diverse array of techniques and methodologies to analyze and comprehend human language. Below are some foundational techniques utilized in NLP:
+
+\begin{itemize}
+    \item \textbf{Tokenization:} This process involves segmenting text into individual units, such as words, phrases, or symbols, known as tokens.
+    \item \textbf{Parsing:} Parsing entails examining the grammatical structure of a sentence to extract its meaning and syntactic relationships.
+    \item \textbf{Lemmatization:} This technique involves reducing words to their base or root form, facilitating the grouping of different word forms with the same meaning.
+    \item \textbf{Named Entity Recognition (NER):} NER is utilized to identify and classify entities within text, such as persons, organizations, locations, and other named items.
+    \item \textbf{Sentiment Analysis:} This method enables the assessment of the sentiment or emotion expressed in a piece of text, aiding in understanding the underlying mood or opinion.
+\end{itemize}
+
+\subsubsection*{What is NLP Used For?}
+
+With some of the basic concepts now defined, one can explore how natural language processing is applied in the modern world.
+
+\begin{itemize}
+    \item \textbf{Automatic Translation:} Automatic translation systems use NLP techniques to translate texts from one language to another.
+    \item \textbf{Chatbots and Virtual Assistants:} Chatbots and virtual assistants use NLP to understand user's natural language and provide appropriate responses.
+    \item \textbf{Automatic Summarization:} NLP algorithms can be employed to summarize lengthy documents into a few sentences.
+    \item \textbf{Sentiment Analysis:} NLP is utilized to analyze sentiments expressed in text, which can be beneficial for businesses in assessing customer satisfaction.
+    \item \textbf{Information Extraction:} NLP systems can extract important information such as names, locations, and dates from texts.
+    \item \textbf{Speech Recognition:} Speech recognition systems utilize NLP techniques to convert speech into text.
+    \item \textbf{Autocorrection:} NLP algorithms are utilized in autocorrection programs to suggest grammatical and spelling corrections.
+    \item \textbf{Text Analysis:} NLP is used to analyze large volumes of text to detect trends, themes, and patterns.
+    \item \textbf{Automatic Text Generation:} NLP enables the automatic generation of text for various applications, such as report writing or content creation.
+\end{itemize}
