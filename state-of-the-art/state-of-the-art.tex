@@ -36,7 +36,7 @@ Artificial Intelligence (AI) encompasses the field of computer science dedicated
     \centering
     \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{ml.png}
     \caption{
-        Machine learning as subfield of AI \cite{datacamp:ml}.
+        \it{Machine learning as subfield of AI \cite{datacamp:ml}.}
     }
 \end{figure}
 
@@ -48,7 +48,7 @@ Machine Learning can be broadly categorized into several types based on the lear
     \centering
     \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{ml-types.png}
     \caption{
-        Types of machine Learning.
+        \it{Types of machine Learning.}
     }
 \end{figure}
 
@@ -196,6 +196,11 @@ The advent of transformer-based architectures, exemplified by GPT (Generative Pr
 
 In recent years, large language models like GPT-3 and the more recent GPT-4 have witnessed a significant enhancement in performance and capabilities, achieving remarkable results across a diverse array of benchmarks.
 
+LLMs use various NLP tasks to achieve their goals. For example, tokenization can be
+used for pricing the LLM usage when used tokens are counted \cite{openai:tokens}, the models summarize texts, answer questions, etc. Different applications that use NLP are search engines,language translation services, chatbots, text summarization, and question-answering.
+While LLMs can incorporate all these tasks and applications, their performance may differ
+from those designed for a specific task.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{llms.png}
@@ -220,12 +225,36 @@ Over the years, the development of LLMs has been propelled by advancements in NL
 \subsubsection*{Transformer Era}
 
 \begin{enumerate}
-    \item \textbf{Attention is All You Need (2017)\cite{vaswani2023attention}:} Vaswani et al. introduced the transformer architecture, which replaced the recurrent layers in traditional models with self-attention mechanisms. This breakthrough enabled the development of more powerful and efficient LLMs, laying the foundation for GPT, BERT, and T5.
-    \item \textbf{GPT (2018)\cite{openai:gpt}:} OpenAI released the Generative Pre-trained Transformer (GPT), a unidirectional transformer model pre-trained on a large corpus of text. GPT showcased impressive language generation capabilities and marked the beginning of a new era of LLMs.
-    \item \textbf{BERT (2018)\cite{devlin2019bert}:} Google introduced the Bidirectional Encoder Representations from Transformers (BERT) model, which used a masked language modeling objective to enable bidirectional context representation. BERT achieved state-of-the-art performance on numerous NLP tasks, revolutionizing the field.
-    \item \textbf{GPT-2 (2019)\cite{radford2019language}} OpenAI released GPT-2, a significantly larger and more powerful version of the original GPT. GPT-2 demonstrated impressive text generation capabilities, generating coherent and contextually relevant text with minimal prompting.
-    \item \textbf{T5 (2019)\cite{raffel2023exploring}:} Google's Text-to-Text Transfer Transformer (T5) adopted a unified text-to-text framework for pre-training and fine-tuning, allowing it to be used for various NLP tasks by simply rephrasing the input and output as text. T5 demonstrated state-of-the-art performance across multiple benchmarks.
-    \item \textbf{GPT-3 (2020)\cite{brown2020language}:} OpenAI unveiled GPT-3, an even larger and more advanced version of the GPT series, with 175 billion parameters. GPT-3's performance on various NLP tasks with minimal fine-tuning raised questions about the capabilities and potential risks associated with LLMs.
+    \item \textbf{Attention is All You Need (2017) \cite{vaswani2023attention}:} Vaswani et al. introduced the transformer architecture, which replaced the recurrent layers in traditional models with self-attention mechanisms. This breakthrough enabled the development of more powerful and efficient LLMs, laying the foundation for GPT, BERT, and T5.
+    \item \textbf{GPT (2018) \cite{openai:gpt}:} OpenAI released the Generative Pre-trained Transformer (GPT), a unidirectional transformer model pre-trained on a large corpus of text. GPT showcased impressive language generation capabilities and marked the beginning of a new era of LLMs.
+    \item \textbf{BERT (2018) \cite{devlin2019bert}:} Google introduced the Bidirectional Encoder Representations from Transformers (BERT) model, which used a masked language modeling objective to enable bidirectional context representation. BERT achieved state-of-the-art performance on numerous NLP tasks, revolutionizing the field.
+    \item \textbf{GPT-2 (2019) \cite{radford2019language}} OpenAI released GPT-2, a significantly larger and more powerful version of the original GPT. GPT-2 demonstrated impressive text generation capabilities, generating coherent and contextually relevant text with minimal prompting.
+    \item \textbf{T5 (2019) \cite{raffel2023exploring}:} Google's Text-to-Text Transfer Transformer (T5) adopted a unified text-to-text framework for pre-training and fine-tuning, allowing it to be used for various NLP tasks by simply rephrasing the input and output as text. T5 demonstrated state-of-the-art performance across multiple benchmarks.
+    \item \textbf{GPT-3 (2020) \cite{brown2020language}:} OpenAI unveiled GPT-3, an even larger and more advanced version of the GPT series, with 175 billion parameters. GPT-3's performance on various NLP tasks with minimal fine-tuning raised questions about the capabilities and potential risks associated with LLMs.
 \end{enumerate}
 
 The history of large language models is marked by continuous innovation and progress in the field of natural language processing. As we move forward, LLMs are expected to grow in size, capability, and efficiency, enabling more complex and human-like language understanding and generation. However, the development of these models also brings forth ethical and practical challenges that must be addressed, such as biases, misuse, and computational resource requirements. It is essential for researchers and practitioners to balance the potential benefits of LLMs with their limitations and risks, fostering responsible development and use of these powerful tools.
+
+\subsection{Neural networks}
+
+Neural Networks (NNs) are computational models composed of layers of neurons that can learn from data. They are versatile and robust models capable of learning directly from raw data, without the need for manually selected features. NNs employ a training algorithm known as backpropagation, which adjusts the model's parameters based on a loss function.
+
+\subsubsection*{Feedforward networks}
+
+A feedforward neural network is characterized by its architecture, devoid of cycles, where the output of layer \(i\) can be computed using the outputs from layer \(i - 1\). The architecture of a neural network encompasses its structure, including the number of hidden layers and neurons, as well as the functions employed for computations. These selections, known as hyperparameters, are parameters whose values are not determined by the learning algorithm. Figure \ref{fig:ffn} shows a typical feedforward network architecture.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{ffn.png}
+    \caption{
+        \it{Example of a feedforward neural network architecture. The network has an
+            input layer with four neurons, one hidden layer with three neurons and an output layer
+            with a single neuron}
+    }
+    \label{fig:ffn}
+\end{figure}
+
+As depicted in Figure \ref{fig:ffn}, neural networks comprise an input layer, \(n\) hidden layers, and an output layer. The input layer receives the data that the network needs to process, which then traverses through the hidden layers before reaching the output layer. The output layer provides the model's result for the given input data. When a neural network contains multiple hidden layers, it qualifies as a deep neural network (DNN) and falls within the domain of deep learning \cite{oshea2015introduction}. Each layer consists of \(i\) neurons, with connections between each neuron in a layer and every neuron in the previous layer, except for the input layer.
+
+Neurons serve as fundamental computational units and, as previously indicated, establish connections with all neurons in the preceding layer. Each connection is characterized by a numerical parameter referred to as a weight.
