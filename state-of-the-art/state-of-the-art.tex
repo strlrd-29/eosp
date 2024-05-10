@@ -320,3 +320,42 @@ The choice of activation function for the output layer hinges on the specific ta
 \end{equation}
 
 \noindent and ensures that all neuron outputs sum to one on the output layer.
+
+\subsubsection*{Recurrent Neural Networks}
+
+Recurrent Neural Networks (RNNs) are specialized neural networks designed for processing sequential data. They operate by incorporating iterations that retain past states, enabling the network to leverage previous inputs as context for the current input [8]. Text serves as a prime example of sequential data, where individual words can be viewed as singular data points within the sequence. Consequently, RNNs can effectively process textual input by utilizing preceding words to predict the subsequent ones. Figure 5 provides an illustration of a basic RNN architecture.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{rnn.png}
+    \caption{
+        \it{Visualization of an RNN with one input neuron, one hidden neuron and
+            one output neuron.}
+    }
+    \label{fig:rnn}
+\end{figure}
+
+The neuron on the hidden layer stores the hidden state, as visualized by the dashed
+line. The activation of the hidden state can be defined as
+
+\begin{equation}
+    H_t = \phi(X_tW_{xh} + H_{t-1}W_{hh} + b_h)
+\end{equation}
+
+where \(H_t\) is the hidden state at time step \(t\), \(\phi_t\) is the activation function of the neuron, \(X_t\) is the neuron input at time step \(t\), \(W_{xh}\) is a weight matrix, \(W_{hh}\) is the weight matrix of the hidden state and \(b_h\) is bias.
+
+RNNs are trained utilizing the backpropagation through time (BPTT) algorithm, which is an adaptation of the standard backpropagation algorithm tailored for networks with a sequential order of computations. In this setup, the output at time step \(t\) depends on the states from preceding steps [21]. During training, the forward pass computes through all time steps, and the resultant loss is utilized to update the parameters across all time steps. One way to conceptualize this process is by envisioning an unrolled RNN, where the recurrent loops are eliminated, resulting in a network structure akin to a feedforward neural network. However, due to the nature of the hidden state dynamics, RNNs are notorious for encountering gradient-related issues during training. As illustrated in Figure \ref{fig:gradient}, if the weight associated with the dotted line is less than one, future values may decrease exponentially [18]. Conversely, weights that start to grow can lead to the exploding gradient problem [8]. When gradients become too small or too large, it can impede the training process of the model.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{gradient.png}
+    \caption{
+        \it{Visualization of the vanishing gradient problem, which is indicated by the
+            hidden neuron color fading away.}
+    }
+    \label{fig:gradient}
+\end{figure}
+
+Despite offering a robust framework for sequential learning, RNNs are hindered by significant limitations arising from the aforementioned issues. One critical limitation stems from the gradient problem encountered during training, which can constrain the effective handling of lengthy sequences. Consequently, RNNs may struggle to capture dependencies between inputs across extended sequences. To address these challenges, numerous techniques and alternative architectures have been proposed. Among these, the Long Short-Term Memory (LSTM) architecture stands out as one of the most prominent examples, and its discussion follows.
