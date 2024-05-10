@@ -1,0 +1,81 @@
+\section{Machine Learning}
+
+\subsection{Definition}
+
+
+Machine Learning, often abbreviated as ML, is a subset of artificial intelligence (AI) that focuses on the development of computer algorithms that improve automatically through experience and by the use of data. In simpler terms, machine learning enables computers to learn from data and make decisions or predictions without being explicitly programmed to do so.
+
+At its core, machine learning is all about creating and implementing algorithms that facilitate these decisions and predictions. These algorithms are designed to improve their performance over time, becoming more accurate and effective as they process more data.
+
+In traditional programming, a computer follows a set of predefined instructions to perform a task. However, in machine learning, the computer is given a set of examples (data) and a task to perform, but it's up to the computer to figure out how to accomplish the task based on the examples it's given.
+
+For instance, if we want a computer to recognize images of cats, we don't provide it with specific instructions on what a cat looks like. Instead, we give it thousands of images of cats and let the machine learning algorithm figure out the common patterns and features that define a cat. Over time, as the algorithm processes more images, it gets better at recognizing cats, even when presented with images it has never seen before.
+
+This ability to learn from data and improve over time makes machine learning incredibly powerful and versatile. It's the driving force behind many of the technological advancements we see today, from voice assistants and recommendation systems to self-driving cars and predictive analytics \cite{datacamp:ml}.
+
+\subsection{Relationships to other fields}
+
+Artificial Intelligence (AI) encompasses the field of computer science dedicated to creating systems capable of emulating human-like intelligence, problem-solving, and decision-making. Machine Learning (ML) is a subset of AI focused on enabling computers to learn from data without being explicitly programmed. Within ML, Deep Learning stands out as a subfield that employs neural networks with multiple layers to learn complex representations of data, particularly effective in tasks like image and speech recognition. ML and Deep Learning are integral components of AI, providing the framework for developing intelligent systems capable of learning, reasoning, and adapting to new information, thereby advancing the capabilities of AI across various domains.
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{ml.png}
+    \caption{
+        \it{Machine learning as subfield of AI \cite{datacamp:ml}.}
+    }
+\end{figure}
+
+\subsection{Types of Machine Learning}
+
+Machine Learning can be broadly categorized into several types based on the learning approach, the availability of labeled data, and the feedback mechanism. The main types of machine learning are:
+
+\begin{figure}[htpb]
+    \centering
+    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{ml-types.png}
+    \caption{
+        \it{Types of machine Learning.}
+    }
+\end{figure}
+
+\subsubsection*{Supervised Learning}
+
+\begin{itemize}
+    \item{In supervised learning, the algorithm learns from labeled data, where each input example is paired with the corresponding output label.}
+    \item{The goal is to learn a mapping from inputs to outputs, allowing the algorithm to make predictions or classifications on unseen data.}
+    \item{Common supervised learning tasks include regression (predicting continuous values) and classification (predicting discrete labels).}
+\end{itemize}
+
+\subsubsection*{Unsupervised Learning:}
+
+\begin{itemize}
+    \item{Unsupervised learning involves learning from unlabeled data, where the algorithm aims to find patterns, structures, or relationships in the data without explicit guidance.}
+    \item{The algorithm discovers hidden structures or clusters within the data, facilitating tasks such as clustering, dimensionality reduction, and anomaly detection.}
+\end{itemize}
+
+\subsubsection*{Semi-Supervised Learning:}
+
+\begin{itemize}
+    \item{Semi-supervised learning lies between supervised and unsupervised learning, where the algorithm learns from a combination of labeled and unlabeled data.}
+    \item{The presence of both labeled and unlabeled data allows the algorithm to leverage additional information and improve performance, particularly in scenarios where labeled data is scarce or expensive to obtain.}
+\end{itemize}
+
+\subsubsection*{Reinforcement Learning:}
+
+\begin{itemize}
+    \item{Reinforcement learning involves an agent learning to make decisions by interacting with an environment to achieve a specific goal.}
+    \item{The agent receives feedback in the form of rewards or penalties based on its actions, enabling it to learn through trial and error.}
+    \item{Reinforcement learning is commonly used in applications such as game playing, robotics, and autonomous systems.}
+\end{itemize}
+
+\subsection{Limitations of Machine Learning: Challenges and Considerations}
+
+Although machine learning is a powerful technique for extracting knowledge from data, it also has certain limitations that are important to consider:
+
+\begin{itemize}
+    \item{\textbf{Data dependency:} Machine learning heavily relies on the quality and quantity of training data. If the data is poorly labeled or unrepresentative, it can lead to errors in predictions.}
+    \item{\textbf{Overfitting:} When the model is too complex compared to the training data, it can overfit and not generalize well to test data. This can also result in poor performance for new data.}
+    \item{\textbf{Explainability:} Machine learning models can be very complex and difficult to understand. It can be challenging to understand how the model makes decisions and to explain these decisions to users.}
+    \item{\textbf{Biased data:} Training data can be biased due to factors such as data selection, human biases, or measurement errors. This can lead to biased predictions for test data.}
+    \item{\textbf{Lack of diversity:} Machine learning models may lack diversity in the types of data they can handle. For example, machine learning models may struggle to process unstructured data such as images, sounds, and texts.}
+    \item{\textbf{Computational cost:} Machine learning algorithms may require high computational power and significant storage resources to process large amounts of data. This can be costly and time-consuming to train and implement models.}
+\end{itemize}
