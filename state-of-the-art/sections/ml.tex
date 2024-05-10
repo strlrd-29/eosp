@@ -3,7 +3,7 @@
 \subsection{Definition}
 
 
-Machine Learning, often abbreviated as ML, is a subset of artificial intelligence (AI) that focuses on the development of computer algorithms that improve automatically through experience and by the use of data. In simpler terms, machine learning enables computers to learn from data and make decisions or predictions without being explicitly programmed to do so.
+Machine Learning, often abbreviated as ML, is a subset of artificial intelligence (AI) that focuses on the development of computer algorithms that improve automatically through experience and by the use of data. In simpler terms, machine learning enables computers to learn from data and make decisions or predictions without being explicitly programmed to do so \cite{datacamp:ml}.
 
 At its core, machine learning is all about creating and implementing algorithms that facilitate these decisions and predictions. These algorithms are designed to improve their performance over time, becoming more accurate and effective as they process more data.
 
@@ -11,7 +11,7 @@ In traditional programming, a computer follows a set of predefined instructions 
 
 For instance, if we want a computer to recognize images of cats, we don't provide it with specific instructions on what a cat looks like. Instead, we give it thousands of images of cats and let the machine learning algorithm figure out the common patterns and features that define a cat. Over time, as the algorithm processes more images, it gets better at recognizing cats, even when presented with images it has never seen before.
 
-This ability to learn from data and improve over time makes machine learning incredibly powerful and versatile. It's the driving force behind many of the technological advancements we see today, from voice assistants and recommendation systems to self-driving cars and predictive analytics \cite{datacamp:ml}.
+This ability to learn from data and improve over time makes machine learning incredibly powerful and versatile. It's the driving force behind many of the technological advancements we see today, from voice assistants and recommendation systems to self-driving cars and predictive analytics.
 
 \subsection{Relationships to other fields}
 
@@ -38,34 +38,23 @@ Machine Learning can be broadly categorized into several types based on the lear
 \end{figure}
 
 \subsubsection*{Supervised Learning}
+Supervised machine learning learns patterns and relationships between input and output data. It is defined by its use of labeled data. A labeled data is a dataset that contains a lot of examples of Features and Target. Supervised learning uses algorithms that learn the relationship of Features and Target from the dataset. This process is referred to as Training or Fitting \cite{datacampsupervised}.
 
-\begin{itemize}
-    \item{In supervised learning, the algorithm learns from labeled data, where each input example is paired with the corresponding output label.}
-    \item{The goal is to learn a mapping from inputs to outputs, allowing the algorithm to make predictions or classifications on unseen data.}
-    \item{Common supervised learning tasks include regression (predicting continuous values) and classification (predicting discrete labels).}
-\end{itemize}
 
 \subsubsection*{Unsupervised Learning:}
 
-\begin{itemize}
-    \item{Unsupervised learning involves learning from unlabeled data, where the algorithm aims to find patterns, structures, or relationships in the data without explicit guidance.}
-    \item{The algorithm discovers hidden structures or clusters within the data, facilitating tasks such as clustering, dimensionality reduction, and anomaly detection.}
-\end{itemize}
+Unsupervised learning, also known as unsupervised machine learning, uses machine learning algorithms to analyze and cluster unlabeled data sets. These algorithms discover hidden patterns or data groupings without the need for human intervention. Unsupervised learning models are utilized for three main tasks—clustering, association, and dimensionality reduction \cite{ibmunsupervised}.
 
 \subsubsection*{Semi-Supervised Learning:}
 
-\begin{itemize}
-    \item{Semi-supervised learning lies between supervised and unsupervised learning, where the algorithm learns from a combination of labeled and unlabeled data.}
-    \item{The presence of both labeled and unlabeled data allows the algorithm to leverage additional information and improve performance, particularly in scenarios where labeled data is scarce or expensive to obtain.}
-\end{itemize}
+Semi-supervised learning is a relatively new and less popular type of machine learning that, during training, blends a sizable amount of unlabeled data with a small amount of labeled data. Semi-supervised learning is between supervised learning (with labeled training data) and unsupervised learning (unlabeled training data).
+
+Semi-supervised learning offers a lot of real-world applications. There is a dearth of labeled data in many fields. Because they involve human annotators, specialized equipment, or expensive, time-consuming studies, the labels (target variable) could be challenging to get \cite{datacampsupervised}.
+
 
 \subsubsection*{Reinforcement Learning:}
 
-\begin{itemize}
-    \item{Reinforcement learning involves an agent learning to make decisions by interacting with an environment to achieve a specific goal.}
-    \item{The agent receives feedback in the form of rewards or penalties based on its actions, enabling it to learn through trial and error.}
-    \item{Reinforcement learning is commonly used in applications such as game playing, robotics, and autonomous systems.}
-\end{itemize}
+Reinforcement learning (RL) is a machine learning technique that trains software to make decisions to achieve the most optimal results. It mimics the trial-and-error learning process that humans use to achieve their goals \cite{awsrl}.
 
 \subsection{Limitations of Machine Learning: Challenges and Considerations}
 
