@@ -249,8 +249,7 @@ A feedforward neural network is characterized by its architecture, devoid of cyc
     \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{ffn.png}
     \caption{
         \it{Example of a feedforward neural network architecture. The network has an
-            input layer with four neurons, one hidden layer with three neurons and an output layer
-            with a single neuron}
+            input layer with four neurons, one hidden layer with three neurons and an output layer with a single neuron.}
     }
     \label{fig:ffn}
 \end{figure}
@@ -258,3 +257,66 @@ A feedforward neural network is characterized by its architecture, devoid of cyc
 As depicted in Figure \ref{fig:ffn}, neural networks comprise an input layer, \(n\) hidden layers, and an output layer. The input layer receives the data that the network needs to process, which then traverses through the hidden layers before reaching the output layer. The output layer provides the model's result for the given input data. When a neural network contains multiple hidden layers, it qualifies as a deep neural network (DNN) and falls within the domain of deep learning \cite{oshea2015introduction}. Each layer consists of \(i\) neurons, with connections between each neuron in a layer and every neuron in the previous layer, except for the input layer.
 
 Neurons serve as fundamental computational units and, as previously indicated, establish connections with all neurons in the preceding layer. Each connection is characterized by a numerical parameter referred to as a weight.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{1nn.png}
+    \caption{
+        \it{Example of computation within a single neuron, where the weighted sum
+            of inputs is passed through an activation function to get the output of the neuron.}
+    }
+    \label{fig:1nn}
+\end{figure}
+
+As show in Figure \ref{fig:1nn}, the neuron receives inputs from neurons of the preceding layer, denoted as \(x_1, x_2, ..., x_n\). Each neuron-to-neuron connection is assigned a weight, representing the strength of the connection. The output from a preceding neuron is multiplied by the weight of the connection and then summed for each connected neuron, yielding the weighted sum of values.
+
+Although not visually represented in Figure \ref{fig:1nn}, a bias parameter is introduced to the weighted sum, thereby altering \(a_j\) to
+
+\begin{equation}
+    a_j = \sum_{j'} w_{jj'}x_{j'} + b
+\end{equation}
+
+The bias serves to adjust the neuron's output independently of the input. This capability enables the model to alter the neuron's output during the learning process without necessitating adjustments to the weights, thereby facilitating finer control.
+
+The weighted sum is subsequently forwarded to an activation function, which determines the neuron's output or its degree of "activation." An illustration of such an activation function is the sigmoid function denoted as \(\sigma\), as depicted in Figure \ref{fig:1nn}. The mathematical expression for the sigmoid function is:
+
+\begin{equation}
+    \sigma(a_j) = \frac{1}{1+e^{-a_j}}
+\end{equation}
+
+According to Nielsen [19], two other common activation functions include \(\tanh \phi\),
+which is defined as
+
+\begin{equation}
+    \phi(a_j) = \tanh(a_j) = \frac{e^{a_j} - e^{-a_j}}{e^{a_j} + e^{-a_j}}
+\end{equation}
+
+and Rectified Linear Unit (ReLU), which is defined by equation
+
+\begin{equation}
+    R(a_j) = max(0, a_j)
+\end{equation}
+
+Symbol \(a_j\) refers to the result of adding together the weighted sum and bias. The
+outputs of these functions are visualized in Figure \ref{fig:activation}.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{activation.png}
+    \caption{
+        \it{Visualization of the sigmoid, tanh and ReLU activation function outputs.}
+    }
+    \label{fig:activation}
+\end{figure}
+
+The outputs produced by these activation functions exhibit non-linearity, signifying that the input parameter does not linearly determine the output value, as evident from Figure \ref{fig:activation}. This concept holds significance in neural networks, enabling them to learn non-linear systems [20]. While several activation functions are commonly employed, ReLU has gained prominence in deep learning due to its demonstrated efficacy in enhancing the performance of numerous neural networks [18]. Typically, the same activation function is applied across all neurons, except for those in the output layer.
+
+The choice of activation function for the output layer hinges on the specific task assigned to the neural network. In regression-based tasks, a linear activation function is employed to obtain the summed weighted output of the preceding neurons. Conversely, for classification problems involving \(k\) output neurons, a softmax function is often utilized. The softmax function is defined as:
+
+\begin{equation}
+    \hat{y} = \frac{e^{a_k}}{\sum_{j=1}^J e^{a_j}}
+\end{equation}
+
+\noindent and ensures that all neuron outputs sum to one on the output layer.
