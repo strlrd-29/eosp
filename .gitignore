@@ -1,8 +1,8 @@
-out/*
-
-!out/main.pdf
+thesis/out/*
 
 *.pdf
+
+!thesis/out/main.pdf
 
 *.log
 
