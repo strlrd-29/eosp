@@ -1,46 +1,32 @@
-\section{Large language models (LLMS)}
+\section{Large language models (LLMs)}
 
-Large language models utilize deep neural networks to generate human-like language output by learning patterns from extensive text data. These models excel at various NLP tasks, including language generation, machine translation, question answering, and sentiment analysis.
+\subsection{Introduction}
 
-The advent of transformer-based architectures, exemplified by GPT (Generative Pre-trained Transformer) and BERT (Bidirectional Encoder Representations from Transformers), marks a recent breakthrough in large language models. These models undergo pre-training on vast datasets, allowing them to learn from massive amounts of data. Subsequently, they can be fine-tuned for specific tasks.
+Language modeling is a long-standing research topic, dating back to the 1950s with Shnnon's application of information theory to human language, where he measures how well simple n-gram language models predict or compress natural language text \cite{6773263}. Since then, statistical language modeling became fundamental to many natural language understanding and generation tasks, ranging from speech recognition, machine translation, to information retrieval \cite{Jelinek1997StatisticalMF} \cite{Manning_Raghavan_Schütze_2008}.
 
-In recent years, large language models like GPT-3 and the more recent GPT-4 have witnessed a significant enhancement in performance and capabilities, achieving remarkable results across a diverse array of benchmarks.
+Recent advances in transformer-based large language models (LLMs), pretrained on web-scale text corpora, have significantly enhanced the capabilities of these models. For instance, OpenAI's ChatGPT and GPT-4 are now used not only for natural language processing but also as general task solvers, exemplified by their integration into Microsoft's Co-Pilot systems. These models can follow complex human instructions and perform multi-step reasoning when necessary. Consequently, LLMs are becoming fundamental building blocks for the development of general-purpose AI agents or artificial general intelligence (AGI).
 
-LLMs use various NLP tasks to achieve their goals. For example, tokenization can be
-used for pricing the LLM usage when used tokens are counted \cite{openai:tokens}, the models summarize texts, answer questions, etc. Different applications that use NLP are search engines,language translation services, chatbots, text summarization, and question-answering.
-While LLMs can incorporate all these tasks and applications, their performance may differ
-from those designed for a specific task.
+LLMs are large-scale, pre-trained, statistical language models based on neural networks. Their recent success is the result of decades of research and development in language modeling, which can be divided into four distinct waves, each with its own starting points and progression: statistical language models, neural language models, pre-trained language models, and LLMs.
+
+Early \textbf{neural language models (NLMs)} \cite{NIPS2000_728f206c}, \cite{schwenk-etal-2006-continuous}, \cite{mikolov10_interspeech}, \cite{graves2014generating} address data sparsity by mapping words to low-dimensional continuous vectors, known as embedding vectors, and predicting the next word based on the aggregation of these vectors using neural networks. The embedding vectors learned by NLMs create a hidden space where the semantic similarity between vectors can be easily computed as their distance. This enables the computation of semantic similarity between any two inputs, regardless of their forms (e.g., queries versus documents in web search \cite{10.1145/2505515.2505665}, \cite{gao2022neural}, sentences in different languages in machine translation \cite{sutskever2014sequence}, \cite{cho2014properties}) or modalities (e.g., image and text in image captioning \cite{cho2014properties}, \cite{vinyals2015tell}). However, early NLMs are task-specific models, as they are trained on task-specific data, resulting in a hidden space that is also task-specific.
+
+\textbf{Pre-trained language models (PLMs)}, unlike early neural language models (NLMs), are task-agnostic. This generality also extends to the learned hidden embedding space. The training and inference of PLMs follow the pre-training and fine-tuning paradigm, where language models utilizing recurrent neural networks \cite{peters2018deep} or transformers \cite{devlin2019bert}, \cite{liu2019roberta}, \cite{he2021deberta} are pre-trained on web-scale unlabeled text corpora for general tasks such as word prediction. They are then fine-tuned for specific tasks using small amounts of labeled, task-specific data. Recent surveys on PLMs include \cite{zhou2023comprehensive}, \cite{han2021pretrained}, \cite{Qiu_2020}.
+
+Large language models (LLMs) mainly refer to transformer-based neural language models that contain tens to hundreds of billions of parameters. These models, such as PaLM \cite{chowdhery2022palm}, LLaMA \cite{touvron2023llama}, and GPT-4 \cite{openai2024gpt4}, are pre-trained on massive text datasets. Compared to pre-trained language models (PLMs), LLMs are not only significantly larger in model size but also exhibit stronger language understanding and generation abilities. More importantly, they demonstrate emergent abilities not present in smaller-scale language models. As illustrated in Figure \ref{fig:llm-capabilities}, these emergent abilities include:
+
+\textbf{In-context learning}: LLMs can learn a new task from a small set of examples presented in the prompt at inference time.
+
+\textbf{Instruction following}: After instruction tuning, LLMs can follow instructions for new types of tasks without explicit examples.
+
+\textbf{Multi-step reasoning}: LLMs can solve complex tasks by breaking them down into intermediate reasoning steps, as demonstrated in the chain-of-thought prompting \cite{wei2023chainofthought}.
+
+LLMs can also be augmented with external knowledge and tools \cite{mialon2023augmented}, \cite{mialon2023augmented}, enabling them to effectively interact with users and the environment \cite{mialon2023augmented}, and continually improve using feedback data collected through interactions, such as via reinforcement learning with human feedback (RLHF).
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{llms.png}
+    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{llm-capabilities.png}
     \caption{
-        \it{Training, fine tuning, and prompting.}
+        \it{LLM capabilities \cite{minaee2024large}}
     }
+    \label{fig:llm-capabilities}
 \end{figure}
-
-\subsection{History of Large Language Models}
-
-Over the years, the development of LLMs has been propelled by advancements in NLP, machine learning, and computing resources. This section offers a comprehensive overview of the significant milestones and breakthroughs that have shaped the evolution of LLMs.
-
-\subsubsection*{Pre-Transformer Era}
-
-\begin{enumerate}
-    \item \textbf{Eliza (1964-1966):} One of the earliest NLP programs, Eliza was a simple chatbot developed by Joseph Weizenbaum, designed to mimic a Rogerian psychotherapist. It used pattern matching and substitution to generate responses, laying the foundation for future conversational AI systems.
-    \item \textbf{Statistical language models (1980s-2000s):} Statistical language models, such as n-grams, were developed to predict the probability of a word in a sequence based on the preceding words. These models were widely used in tasks like speech recognition and machine translation but struggled with capturing long-range dependencies in text.
-    \item \textbf{Neural language models (2003-2013):} Neural language models, such as feedforward and recurrent neural networks (RNNs), emerged as an alternative to statistical models. Bengio et al. (2003) introduced a feedforward neural network for language modeling, while Mikolov et al. (2010) popularized RNN-based models with the release of the RNNLM toolkit.
-    \item \textbf{Long Short-Term Memory (LSTM) models (1997-2014):} Hochreiter and Schmidhuber (1997) introduced LSTMs as a solution to the vanishing gradient problem faced by RNNs. LSTMs were later used in sequence-to-sequence models for tasks like machine translation (Sutskever et al., 2014) and formed the basis for several LLMs.
-\end{enumerate}
-
-\subsubsection*{Transformer Era}
-
-\begin{enumerate}
-    \item \textbf{Attention is All You Need (2017) \cite{vaswani2023attention}:} Vaswani et al. introduced the transformer architecture, which replaced the recurrent layers in traditional models with self-attention mechanisms. This breakthrough enabled the development of more powerful and efficient LLMs, laying the foundation for GPT, BERT, and T5.
-    \item \textbf{GPT (2018) \cite{openai:gpt}:} OpenAI released the Generative Pre-trained Transformer (GPT), a unidirectional transformer model pre-trained on a large corpus of text. GPT showcased impressive language generation capabilities and marked the beginning of a new era of LLMs.
-    \item \textbf{BERT (2018) \cite{devlin2019bert}:} Google introduced the Bidirectional Encoder Representations from Transformers (BERT) model, which used a masked language modeling objective to enable bidirectional context representation. BERT achieved state-of-the-art performance on numerous NLP tasks, revolutionizing the field.
-    \item \textbf{GPT-2 (2019) \cite{radford2019language}} OpenAI released GPT-2, a significantly larger and more powerful version of the original GPT. GPT-2 demonstrated impressive text generation capabilities, generating coherent and contextually relevant text with minimal prompting.
-    \item \textbf{T5 (2019) \cite{raffel2023exploring}:} Google's Text-to-Text Transfer Transformer (T5) adopted a unified text-to-text framework for pre-training and fine-tuning, allowing it to be used for various NLP tasks by simply rephrasing the input and output as text. T5 demonstrated state-of-the-art performance across multiple benchmarks.
-    \item \textbf{GPT-3 (2020) \cite{brown2020language}:} OpenAI unveiled GPT-3, an even larger and more advanced version of the GPT series, with 175 billion parameters. GPT-3's performance on various NLP tasks with minimal fine-tuning raised questions about the capabilities and potential risks associated with LLMs.
-\end{enumerate}
-
-The history of large language models is marked by continuous innovation and progress in the field of natural language processing. As we move forward, LLMs are expected to grow in size, capability, and efficiency, enabling more complex and human-like language understanding and generation. However, the development of these models also brings forth ethical and practical challenges that must be addressed, such as biases, misuse, and computational resource requirements. It is essential for researchers and practitioners to balance the potential benefits of LLMs with their limitations and risks, fostering responsible development and use of these powerful tools.
