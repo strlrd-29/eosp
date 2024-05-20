@@ -33,7 +33,7 @@ LLMs can also be augmented with external knowledge and tools \cite{mialon2023aug
 
 \subsection{Large Language Model Families}
 
-Large language models (LLMs) primarily refer to transformer-based pre-trained language models (PLMs) that encompass tens to hundreds of billions of parameters. Compared to the previously discussed PLMs, LLMs are significantly larger in size and demonstrate enhanced capabilities in language understanding, generation, and emergent phenomena that are absent in smaller models. This section will examine three prominent LLM families: GPT, LLaMA, and PaLM, as illustrated in Figure \ref{fig:llm-families}
+Large language models (LLMs) primarily refer to transformer-based pre-trained language models (PLMs) that encompass tens to hundreds of billions of parameters. Compared to the previously discussed PLMs, LLMs are significantly larger in size and demonstrate enhanced capabilities in language understanding, generation, and emergent phenomena that are absent in smaller models. This section will examine three prominent LLM families: GPT, LLaMA, and PaLM, as illustrated in Figure \ref{fig:llm-families}.
 
 \begin{figure}[H]
     \centering
@@ -43,3 +43,19 @@ Large language models (LLMs) primarily refer to transformer-based pre-trained la
     }
     \label{fig:llm-families}
 \end{figure}
+
+\textbf{The GPT Family:} Generative Pre-trained Transformers (GPT) are a series of decoder-only Transformer-based language models developed by OpenAI. This series includes models such as GPT-1, GPT-2, GPT-3, InstrucGPT, ChatGPT, GPT-4, CODEX, and WebGPT. While the earlier models, such as GPT-1 and GPT-2, are open-source, the more recent models, including GPT-3 and GPT-4, are proprietary and accessible only through APIs.
+
+\textbf{The LLaMA Family:} LLaMA is a series of foundational language models released by Meta. In contrast to GPT models, LLaMA models are open-source, with model weights made available to the research community under a noncommercial license. Consequently, the LLaMA family has expanded rapidly, as these models are widely utilized by numerous research groups to develop improved open-source language models to compete with proprietary models or to create task-specific models for mission-critical applications.
+
+\textbf{The PaLM Family:} The PaLM (Pathways Language Model) family, developed by Google, includes the first PaLM model \cite{chowdhery2022palm} announced in April 2022 and kept private until March 2023. This transformer-based LLM features 540 billion parameters and is pre-trained on a high-quality text corpus containing 780 billion tokens, covering a broad spectrum of natural language tasks and applications. The model's pre-training utilized 6144 TPU v4 chips within the Pathways system, facilitating highly efficient training across multiple TPU Pods. PaLM showcases the ongoing advantages of scaling, achieving state-of-the-art few-shot learning results on hundreds of language understanding and generation benchmarks. The PaLM-540B model not only surpasses state-of-the-art fine-tuned models on various multi-step reasoning tasks but also performs comparably to humans on the newly introduced BIG-bench benchmark.
+
+\subsection{Tokenizations}
+
+Tokenization refers to the process of converting a sequence of text into smaller units known as tokens. While the simplest tokenization tools split text based on whitespace, most rely on a word dictionary. However, this approach faces the out-of-vocabulary (OOV) problem, as the tokenizer can only recognize words present in its dictionary. To address this, popular tokenizers for LLMs are based on sub-words, which can be combined to form a vast array of words, including those not seen in the training data or from different languages. The following sections describe three popular tokenizers \cite{minaee2024large}.
+
+\textbf{BytePairEncoding:} BytePairEncoding (BPE) is originally a data compression algorithm that leverages frequent patterns at the byte level to compress data. The algorithm primarily aims to retain frequent words in their original form while breaking down less common words. This approach ensures that the vocabulary remains manageable in size while adequately representing common words. Additionally, BPE effectively represents morphological variations of frequent words if their suffixes or prefixes are commonly found in the training data.
+
+\textbf{WordPieceEncoding:} This algorithm is predominantly used in well-known models such as BERT and Electra. At the beginning of training, it incorporates the entire alphabet from the training data to ensure that no characters are left as UNK (unknown). This scenario occurs when the model encounters input that cannot be tokenized, typically involving untokenizable characters. Similar to BytePairEncoding, this approach aims to maximize the likelihood of including all tokens in the vocabulary based on their frequency.
+
+\textbf{SentencePieceEncoding:} Although the previously described tokenizers offer significant advantages over white-space tokenization, they still assume that words are always separated by white spaces. This assumption does not hold true for all languages, where words can be disrupted by various noisy elements such as unwanted spaces or invented words. SentencePieceEncoding aims to address this issue.
