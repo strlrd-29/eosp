@@ -54,8 +54,72 @@ Large language models (LLMs) primarily refer to transformer-based pre-trained la
 
 Tokenization refers to the process of converting a sequence of text into smaller units known as tokens. While the simplest tokenization tools split text based on whitespace, most rely on a word dictionary. However, this approach faces the out-of-vocabulary (OOV) problem, as the tokenizer can only recognize words present in its dictionary. To address this, popular tokenizers for LLMs are based on sub-words, which can be combined to form a vast array of words, including those not seen in the training data or from different languages. The following sections describe three popular tokenizers \cite{minaee2024large}.
 
-\textbf{BytePairEncoding:} BytePairEncoding (BPE) is originally a data compression algorithm that leverages frequent patterns at the byte level to compress data. The algorithm primarily aims to retain frequent words in their original form while breaking down less common words. This approach ensures that the vocabulary remains manageable in size while adequately representing common words. Additionally, BPE effectively represents morphological variations of frequent words if their suffixes or prefixes are commonly found in the training data.
+\subsubsection*{BytePairEncoding}
 
-\textbf{WordPieceEncoding:} This algorithm is predominantly used in well-known models such as BERT and Electra. At the beginning of training, it incorporates the entire alphabet from the training data to ensure that no characters are left as UNK (unknown). This scenario occurs when the model encounters input that cannot be tokenized, typically involving untokenizable characters. Similar to BytePairEncoding, this approach aims to maximize the likelihood of including all tokens in the vocabulary based on their frequency.
+BytePairEncoding (BPE) is originally a data compression algorithm that leverages frequent patterns at the byte level to compress data. The algorithm primarily aims to retain frequent words in their original form while breaking down less common words. This approach ensures that the vocabulary remains manageable in size while adequately representing common words. Additionally, BPE effectively represents morphological variations of frequent words if their suffixes or prefixes are commonly found in the training data.
 
-\textbf{SentencePieceEncoding:} Although the previously described tokenizers offer significant advantages over white-space tokenization, they still assume that words are always separated by white spaces. This assumption does not hold true for all languages, where words can be disrupted by various noisy elements such as unwanted spaces or invented words. SentencePieceEncoding aims to address this issue.
+\subsubsection*{WordPieceEncoding}
+
+This algorithm is predominantly used in well-known models such as BERT and Electra. At the beginning of training, it incorporates the entire alphabet from the training data to ensure that no characters are left as UNK (unknown). This scenario occurs when the model encounters input that cannot be tokenized, typically involving untokenizable characters. Similar to BytePairEncoding, this approach aims to maximize the likelihood of including all tokens in the vocabulary based on their frequency.
+
+\subsubsection*{SentencePieceEncoding}
+
+Although the previously described tokenizers offer significant advantages over white-space tokenization, they still assume that words are always separated by white spaces. This assumption does not hold true for all languages, where words can be disrupted by various noisy elements such as unwanted spaces or invented words. SentencePieceEncoding aims to address this issue.
+
+\subsection{Positional Encoding}
+
+\subsubsection*{Absolute Positional Embeddings}
+
+Absolute Positional Embeddings (APE) \cite{vaswani2023attention} has been used in the original Transformer model to preserve the sequence order information. Consequently, positional information of words is added to the input embeddings at the base of both the encoder and decoder stacks. Various options exist for positional encodings, including learned or fixed methods. In the vanilla Transformer, sine and cosine functions are utilized for this purpose. However, the main drawback of using APE in Transformers is its limitation to a fixed number of tokens. Moreover, APE does not account for the relative distances between tokens.
+
+
+\subsubsection*{Relative Positional Embeddings}
+
+Relative Positional Embeddings(RPE) \cite{shaw2018selfattention} extend self-attention to consider the pairwise connections between input elements. RPE is integrated into the model at two levels: first, as an additional component to the keys, and subsequently, as a sub-component of the values matrix. This methodology views the input as a fully-connected graph with labels and directed edges. In the context of linear sequences, edges can encode information about the relative positional disparities between input elements. A clipping distance, denoted as \( k^2 \leq k \leq n - 4 \), specifies the maximum limit on relative locations. This mechanism enables the model to make sensible predictions for sequence lengths not present in the training data.
+
+\subsubsection*{Rotary Position Embeddings}
+
+Rotary Positional Embedding (RoPE) \cite{su2023roformer} addresses limitations inherent in existing approaches. Learned absolute positional encodings may lack generalizability and significance, particularly in the context of short sentences. Additionally, current methods such as T5's positional embedding struggle with constructing a complete attention matrix between positions. RoPE employs a rotation matrix to encode the absolute position of words while concurrently incorporating explicit relative position details in self-attention. This approach offers several advantageous features, including flexibility with varying sentence lengths, reduced word dependency as relative distances increase, and enhancement of linear self-attention through relative position encoding. Notably, models like GPT-NeoX-20B, PaLM, CODEGEN, and LLaMA leverage RoPE within their architectures.
+
+\subsubsection*{Relative Positional Bias}
+
+The rationale behind this form of positional embedding is to enable extrapolation during inference for sequences longer than those encountered during training. In their work \cite{press2022train}, Press et al. introduced Attention with Linear Biases (ALiBi). Rather than solely adding positional embeddings to word embeddings, they introduced a bias to the attention scores of query-key pairs, imposing a penalty proportional to their distance. The BLOOM \cite{workshop2023bloom} model leverages ALiBi as part of its architecture.
+
+\begin{figure}[H]
+    \centering
+
+    \begin{subfigure}[b]{.49\linewidth}
+        \centering
+        \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{ape.png}
+        \caption{
+            \it{Absolute positional encoding \cite{ke2021rethinking}}
+        }
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{.49\linewidth}
+        \centering
+        \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{rpe.png}
+        \caption{
+            \it{Relative Positional Embeddings}
+        }
+    \end{subfigure}
+    \par\bigskip
+    \begin{subfigure}[b]{.49\linewidth}
+        \centering
+        \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{alibi.png}
+        \caption{
+            \it{Relative Positional Bias \cite{press2022train}}
+        }
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{.49\linewidth}
+        \centering
+        \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{rope.png}
+        \caption{
+            \it{Rotary Positional Embedding \cite{su2023roformer}}
+        }
+    \end{subfigure}
+
+    \caption{\it{Various positional encodings employed in LLMs}}
+
+\end{figure}
