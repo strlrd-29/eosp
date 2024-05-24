@@ -160,3 +160,16 @@ More recently, \textbf{Mixture of Experts (MoE)} \cite{shazeer2017outrageously},
     }
     \label{fig:moe}
 \end{figure}
+
+
+\subsection{Fine-tuning and Instruction Tuning}
+
+Early language models, such as BERT, trained using self-supervision, were not able to perform specific tasks directly. To make the foundation model useful, it needed to be fine-tuned for a specific task using labeled data, a process known as supervised fine-tuning (SFT). For instance, in the original BERT paper \cite{devlin2019bert}, the model was fine-tuned for 11 different tasks. While more recent LLMs no longer require fine-tuning to be functional, they can still benefit from task-specific or data-specific fine-tuning. For example, OpenAI reports that the much smaller GPT-3.5 Turbo model can outperform GPT-4 when fine-tuned with task-specific data\footnote{\url{https://platform.openai.com/docs/guides/fine-tuning}}.
+
+Fine-tuning does not have to be limited to a single task; various approaches to multi-task fine-tuning exist (see, e.g., Mahabi et al. \cite{mahabadi2021parameterefficient}). Fine-tuning on one or more tasks is known to improve results and reduce the complexity of prompt engineering, offering an alternative to retrieval-augmented generation. Additionally, there are other compelling reasons to fine-tune a model. For instance, fine-tuning can expose the model to new or proprietary data that it did not encounter during pre-training.
+
+An essential motivation for fine-tuning LLMs is to ensure that their responses align with the expectations humans have when providing instructions through prompts. This process is referred to as instruction tuning \cite{zhang2024instruction}. While we delve into the specifics of designing and engineering prompts in later sections, it's crucial to grasp that in the context of instruction tuning, the instruction acts as a prompt that outlines the task the LLM is expected to perform. Instruction tuning datasets, such as Natural Instructions \cite{mishra2022crosstask}, encompass not only the task definition but also include other components such as positive and negative examples or instructions on what to avoid.
+
+The specific methodology and instruction datasets utilized for instruction tuning an LLM may vary; however, as a general trend, instruction-tuned models tend to surpass the performance of their original foundation models upon which they are built. For instance, InstructGPT \cite{ouyang2022training} exhibits superior performance to GPT-3 across most benchmarks. Similarly, Alpaca \cite{alpaca} outperforms LLaMA in comparative evaluations.
+
+\textbf{Self-Instruct} \cite{wang2023selfinstruct}, introduced by Wang et al., is another prominent method in this domain. They proposed a framework aimed at enhancing the instruction-following abilities of pre-trained language models by leveraging their own generated outputs. Their pipeline involves generating instructions, input, and output samples from a language model, followed by filtering out invalid or redundant ones before employing them to fine-tune the original model.
