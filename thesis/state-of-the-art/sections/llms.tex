@@ -123,3 +123,40 @@ The rationale behind this form of positional embedding is to enable extrapolatio
     \caption{\it{Various positional encodings employed in LLMs}}
 
 \end{figure}
+
+\subsection{Model Pre-training}
+
+Pre-training is the very first step in the large language model training pipeline, helping LLMs acquire fundamental language understanding capabilities, which can be useful in a wide range of language-related tasks. During pre-training, the LLM is trained on a massive amount of (usually) unlabeled texts, typically in a self-supervised manner. There are different approaches used for pre-training, such as next sentence prediction \cite{devlin2019bert}. The two most common techniques include next token prediction (autoregressive language modeling) and masked language modeling.
+
+In the \textbf{Autoregressive Language Modeling} framework, given a sequence of n tokens \( x_1, \ldots, x_n \), the model aims to predict the next token \( x_{n+1} \) (and occasionally the subsequent sequence of tokens) in an autoregressive manner. A commonly used loss function in this context is the log-likelihood of the predicted tokens, as demonstrated in Equation \ref{eq:alm}.
+
+\begin{equation}\label{eq:alm}
+    \mathcal{L}_{ALM}(x) = \sum_{i=1}^N p(x_{i+n} |x_i, \ldots, x_{i+n-1})
+\end{equation}
+
+Given the autoregressive nature of this framework, decoder-only models are inherently better suited to learn and perform these tasks.
+
+\hfill
+
+In \textbf{Masked Language Modeling}, certain words in a sequence are masked, and the model is trained to predict these masked words based on the surrounding context. This approach is sometimes referred to as denoising autoencoding. If we denote the masked or corrupted samples in the sequence \( x \) as \( \tilde{x} \), the training objective can be expressed as:
+
+
+\begin{equation}
+    \mathcal{L}_{MLM}(x) = \sum_{i=1}^N p(\tilde{x}|x\backslash \tilde{x})
+\end{equation}
+
+\hfill
+
+More recently, \textbf{Mixture of Experts (MoE)} \cite{shazeer2017outrageously}, \cite{fedus2022switch} have gained significant popularity in the LLM space. MoEs allow models to be pre-trained with substantially less compute, enabling a dramatic increase in model or dataset size within the same compute budget as a dense model. An MoE architecture consists of two main components: Sparse MoE layers, which replace dense feed-forward network (FFN) layers, and contain several "experts" (e.g., 8), each of which is a neural network. Typically, these experts are FFNs, but they can also be more complex networks. A gate network, or router, determines which tokens are sent to which expert. Notably, a token can be routed to multiple experts. Routing tokens to experts is a critical decision in MoE design; the router consists of learned parameters and is trained concurrently with the rest of the network. Figure 29 illustrates a Switch Transformer encoder block, commonly used in MoEs.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{moe.png}
+    \caption{
+        \it{Illustration of a Switch Transformer encoder block.
+            They replaced the dense feed forward network (FFN) layer present in the Transformer with a sparse Switch FFN layer
+            (light blue). \cite{fedus2022switch}}
+    }
+    \label{fig:moe}
+\end{figure}
