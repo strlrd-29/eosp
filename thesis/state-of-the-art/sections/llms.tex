@@ -173,3 +173,37 @@ An essential motivation for fine-tuning LLMs is to ensure that their responses a
 The specific methodology and instruction datasets utilized for instruction tuning an LLM may vary; however, as a general trend, instruction-tuned models tend to surpass the performance of their original foundation models upon which they are built. For instance, InstructGPT \cite{ouyang2022training} exhibits superior performance to GPT-3 across most benchmarks. Similarly, Alpaca \cite{alpaca} outperforms LLaMA in comparative evaluations.
 
 \textbf{Self-Instruct} \cite{wang2023selfinstruct}, introduced by Wang et al., is another prominent method in this domain. They proposed a framework aimed at enhancing the instruction-following abilities of pre-trained language models by leveraging their own generated outputs. Their pipeline involves generating instructions, input, and output samples from a language model, followed by filtering out invalid or redundant ones before employing them to fine-tune the original model.
+
+\subsection{Reinforcement Learning from Human Feedback (RLHF)}
+
+AI Alignment is the process of steering AI systems towards human goals, preferences, and principles. LLMs, pre-trained for word prediction, often exhibit unintended behaviors. For example, they might generate contents that are toxic, harmful, misleading and biased.
+
+Instruction tuning, discussed above, gets LLMs a step closer to being aligned. However, in many cases, it is important to include further steps to improve the alignment of the model and avoid unintended behaviors.
+
+Reinforcement Learning from Human Feedback (RLHF) is a powerful technique used to fine-tune large language models (LLMs) by leveraging human-generated feedback. This approach helps address limitations of supervised fine-tuning, such as overfitting to the training data, and enables LLMs to better align with human preferences and values. This section explores the key components and process of RLHF \cite{christiano2023deep}.
+
+\subsubsection*{Collecting Human Feedback}
+
+The first step in RLHF involves collecting human feedback on model-generated outputs. This can be achieved through several methods, such as:
+
+\begin{itemize}
+    \item Providing demonstrations of correct behavior.
+    \item Comparing different model-generated outputs and ranking them based on quality.
+    \item Assigning explicit rewards or scores to model outputs.
+\end{itemize}
+
+The collected feedback serves as a valuable source of information for the model to learn from, helping it better understand human preferences and expectations.
+
+\subsubsection*{Reward Modeling}
+
+Once human feedback is collected, a reward model is trained to predict the quality of the model-generated outputs. This reward model acts as a proxy for human judgment and is used to guide the reinforcement learning process. By training the reward model on human-generated feedback, it learns to approximate human preferences and assign rewards accordingly.
+
+\subsubsection*{Reinforcement Learning}
+
+With a reward model in place, the LLM is fine-tuned using reinforcement learning algorithms such as Proximal Policy Optimization (PPO) \cite{schulman2017proximal} or REINFORCE \cite{ahmadian2024basics}. The goal is to generate outputs that maximize the predicted rewards, which are a proxy for human preferences. By optimizing the model's behavior to align with the reward model, LLMs can learn to generate outputs that are more desirable and useful to human users.
+
+\subsubsection*{Iterative Improvement}
+
+The RLHF process is iterative. As the model improves, additional human feedback can be collected to further refine the reward model. This updated reward model is then used to guide another round of reinforcement learning, resulting in continued performance improvements.
+
+Through these iterations, LLMs can learn to better align with human values and preferences, which can lead to higher-quality outputs and improved performance on specific tasks. RLHF has been successfully applied to fine-tune models like OpenAI's ChatGPT \cite{ouyang2022training}, demonstrating its effectiveness in enhancing the capabilities of LLMs.
