@@ -207,3 +207,46 @@ With a reward model in place, the LLM is fine-tuned using reinforcement learning
 The RLHF process is iterative. As the model improves, additional human feedback can be collected to further refine the reward model. This updated reward model is then used to guide another round of reinforcement learning, resulting in continued performance improvements.
 
 Through these iterations, LLMs can learn to better align with human values and preferences, which can lead to higher-quality outputs and improved performance on specific tasks. RLHF has been successfully applied to fine-tune models like OpenAI's ChatGPT \cite{ouyang2022training}, demonstrating its effectiveness in enhancing the capabilities of LLMs.
+
+\subsection{How LLMs are used and augmented}
+
+Once LLMs are trained, they become capable of generating desired outputs for various tasks. While LLMs can be directly utilized through basic prompting, fully exploiting their potential or overcoming some of their limitations often requires augmentation through external means. In this section, we initially provide a concise overview of the primary shortcomings of LLMs, with a particular focus on the issue of hallucination. We then discuss how prompting and certain augmentation strategies can not only mitigate these limitations but also enhance the capabilities of LLMs, potentially transforming them into comprehensive AI agents with the capacity to interact with the external world.
+
+\subsubsection*{LLM limitations}
+
+It's crucial to acknowledge that LLMs are trained to predict tokens. Despite the enhancements brought about by fine-tuning and alignment, they still exhibit significant limitations, especially if used in a simplistic manner. Some notable constraints include:
+
+\begin{itemize}
+    \item Lack of state/memory: LLMs inherently lack the ability to retain information from previous prompts, which poses a challenge for tasks requiring some form of state management.
+    \item Stochastic/probabilistic nature: Repeatedly sending the same prompt to an LLM may result in different responses due to its probabilistic nature. Although parameters like temperature can mitigate variability, this trait stems from their training process and can lead to inconsistent outputs.
+    \item Limited access to external data: LLMs operate in isolation and lack real-time information or access to data beyond their training set.
+    \item Large resource requirements: Given their substantial size, training and serving LLMs often necessitate expensive GPU resources. Larger models may also exhibit poor service level agreements (SLAs), particularly concerning latency.
+    \item Hallucinatory tendencies: LLMs lack a definitive concept of "truth" and have been trained on diverse content, leading to the generation of plausible yet inaccurate responses.
+\end{itemize}
+
+While all these limitations are pertinent to various applications, it's particularly insightful to delve deeper into the issue of hallucinations. This phenomenon has garnered significant attention in recent months and has catalyzed the development of numerous prompting approaches and LLM augmentation techniques, as we'll explore further.
+
+\hfill
+
+In the domain of Large Language Models (LLMs), the concept of \textbf{"hallucinations"} has become a focal point of discussion. Defined in the literature, particularly in the paper "Survey of Hallucination in Natural Language Generation" \cite{Ji_2023}, hallucination within an LLM refers to "the generation of content that is nonsensical or deviates from the provided source." Although the term originates from psychological discourse, it has been adopted and adapted within the realm of artificial intelligence.
+
+Hallucinations in LLMs can be broadly categorized into
+two types:
+
+\begin{enumerate}
+    \item \textbf{Intrinsic Hallucinations:} These directly conflict with the source material, introducing factual inaccuracies or logical inconsistencies.
+    \item \textbf{Extrinsic Hallucinations:} These, while not contradicting, are unverifiable against the source, encompassing speculative or unconfirmable elements.
+\end{enumerate}
+
+In LLM contexts, the definition of 'source' varies depending on the task at hand. In dialogue-based tasks, 'source' typically refers to 'world knowledge,' encompassing a broad range of factual and contextual information. Conversely, in tasks like text summarization, the 'source' is more narrowly defined as the input text itself. This distinction holds significance in assessing and understanding hallucinations within LLM-generated content. Furthermore, the implications of hallucinations are highly context-dependent. For instance, in creative endeavors such as poem writing, hallucinations may be considered acceptable or even advantageous, as they can contribute to artistic expression and innovation.
+
+LLMs, trained on diverse datasets sourced from the internet, books, and Wikipedia, generate text based on probabilistic models, lacking an intrinsic understanding of truth or falsehood. Despite recent advancements such as instruct tuning and Reinforcement Learning from Human Feedback (RLHF), which aim to guide LLMs toward producing more factually accurate outputs, the fundamental probabilistic nature and associated limitations persist. A recent study titled "Sources of Hallucination by Large Language Models on Inference Tasks" \cite{mckenna2023sources} sheds light on two critical factors contributing to hallucinations in LLMs: the veracity prior and the relative frequency heuristic. This underscores the intricate challenges involved in LLM training and output generation.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=8cm,keepaspectratio=true]{llms-used-and-augmented.png}
+    \caption{
+        \it{How LLMs Are Used and Augmented \cite{minaee2024large}.}
+    }
+    \label{fig:llm-used-and-augmented}
+\end{figure}
