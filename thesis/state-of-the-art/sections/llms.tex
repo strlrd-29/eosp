@@ -250,3 +250,92 @@ LLMs, trained on diverse datasets sourced from the internet, books, and Wikipedi
     }
     \label{fig:llm-used-and-augmented}
 \end{figure}
+
+\subsubsection*{Prompt Design and Engineering}
+
+In generative AI models, a prompt refers to the textual input provided by users to steer the model's output. This input can vary from straightforward questions to detailed descriptions or specific tasks. Typically, prompts encompass instructions, questions, input data, and examples. In practice, to prompt a desired response from an AI model, a prompt must include either instructions or questions, although other elements are optional. Advanced prompts may involve more intricate structures, such as "chain of thought" prompting, where the model is directed to follow a logical reasoning process to generate an answer.
+
+Prompt engineering is a rapidly evolving discipline that shapes the interactions and outputs of LLMs and other generative AI models. At its core, prompt engineering involves crafting optimal prompts to achieve specific goals with a generative model. This process goes beyond merely instructing the model; it also requires a deep understanding of the model's capabilities and limitations, as well as the context in which it operates.
+
+Researchers employ prompt engineering to enhance the performance of LLMs across a broad spectrum of tasks, including question answering and arithmetic reasoning. Developers utilize prompt engineering to create robust and effective prompting techniques that interface seamlessly with LLMs and other tools.
+
+Prompt engineering extends beyond the design and development of prompts. It encompasses a wide array of skills and techniques essential for interacting with and developing LLMs. This discipline is crucial for interfacing with LLMs, building applications with them, and understanding their capabilities. Through prompt engineering, one can enhance the safety of LLMs and develop new functionalities, such as augmenting LLMs with domain knowledge and integrating external tools.
+
+In the following paragraphs we detail some of the most
+interesting and popular prompt engineering approaches.
+
+\hfill
+
+1) Chain of Thought (CoT): The Chain of Thought (CoT) technique, first described in the paper "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models" \cite{wei2023chainofthought} by Google researchers, marks a significant advancement in prompt engineering for Large Language Models (LLMs). This method is based on the understanding that although LLMs excel in token prediction, they are not inherently designed for explicit reasoning. CoT mitigates this limitation by guiding the model through essential reasoning steps.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=8cm,keepaspectratio=true]{cot.png}
+    \caption{
+        \it{Chain-of-Thought (CoT) Prompting \cite{wei2023chainofthought}}
+    }
+\end{figure}
+
+CoT is designed to make the implicit reasoning process of LLMs explicit. By outlining the necessary reasoning steps, this technique guides the model towards producing more logical and reasoned outputs, particularly in scenarios that demand more than simple information retrieval or pattern recognition.
+
+\hfill
+
+2) Tree of Thought (ToT): The Tree of Thought (ToT) prompting technique \cite{yao2023tree} draws inspiration from the concept of exploring various alternative solutions or thought processes before settling on the most plausible one. ToT involves branching out into multiple "thought trees," with each branch representing a different line of reasoning. This method enables the LLM to investigate various possibilities and hypotheses, mirroring human cognitive processes where multiple scenarios are considered before determining the most likely outcome.
+
+
+A critical aspect of ToT is the evaluation of these reasoning paths. As the LLM generates different branches of thought, each branch is assessed for its validity and relevance to the query. This process involves real-time analysis and comparison of the branches, ultimately leading to the selection of the most coherent and logical outcome.
+
+ToT is particularly useful in complex problem-solving scenarios where a single line of reasoning might not suffice. It enables LLMs to mimic a more human-like problem-solving approach by considering a range of possibilities before arriving at a conclusion. This technique enhances the model's ability to handle ambiguity, complexity, and nuanced tasks, making it a valuable tool in advanced AI applications.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=8cm,keepaspectratio=true]{tot.png}
+    \caption{
+        \it{Tree-of-Thought (ToT) Framework \cite{yao2023tree}}
+    }
+\end{figure}
+
+\hfill
+
+3) Self-Consistency: Self-Consistency \cite{manakul2023selfcheckgpt} employs an ensemble-based method, prompting the LLM to generate multiple responses to the same query. The consistency among these responses acts as an indicator of their accuracy and reliability.
+
+The Self-Consistency approach is based on the principle that if an LLM generates multiple similar responses to the same prompt, the response is more likely to be accurate. This method involves prompting the LLM to address a query multiple times and then analyzing the responses for consistency. This technique is particularly useful in scenarios where factual accuracy and precision are critical.
+
+The consistency of responses can be measured using various methods. One common approach is to analyze the overlap in the content of the responses. Other methods include comparing the semantic similarity of responses or employing more sophisticated techniques like BERT-scores or n-gram overlaps. These measures help quantify the level of agreement among the responses generated by the LLM.
+
+\hfill
+
+4) Reflexion: Reflexion \cite{shinn2023reflexion} involves prompting LLMs to assess and potentially revise their own outputs by reasoning about the correctness and coherence of their responses. The concept of Reflexion centers on the ability of LLMs to engage in a form of self-evaluation. After generating an initial response, the model is prompted to reflect on its own output, considering factors such as factual accuracy, logical consistency, and relevance. This introspective process can lead to the generation of revised or improved responses.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=8cm,keepaspectratio=true]{reflexion.png}
+    \caption{
+        \it{Diagram of Reflection \cite{shinn2023reflexion}.}
+    }
+\end{figure}
+
+A crucial component of Reflexion is the LLM's ability to self-edit. By assessing its initial response, the model can detect potential errors or areas that need improvement. This iterative process of generating, reflecting, and revising enables the LLM to enhance its output, improving the overall quality and reliability of its responses.
+
+\hfill
+
+5) Chains: Chains refer to the method of linking multiple components in a sequence to manage complex tasks with Large Language Models (LLMs). This approach involves creating a series of interconnected steps or processes, each contributing to the final outcome. The concept of Chains is based on constructing a workflow where different stages or components are sequentially arranged. Each component in a Chain performs a specific function, with the output of one serving as the input for the next. This end-to-end arrangement allows for more intricate and nuanced processing, as each stage can be customized to handle a specific aspect of the task. The complexity and structure of Chains can vary based on the requirements. In "PromptChainer: Chaining Large Language Model Prompts through Visual Programming" \cite{wu2022promptchainer}, the authors discuss the main challenges in designing chains and introduce a visual tool to support these tasks.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=8cm,keepaspectratio=true]{chains.png}
+    \caption[        \it{The PromptChainer interface.}
+    ]{\it{The PromptChainer interface. (A) The Chain View visualizes the chain structure with node-edge diagrams (enlarged
+            in Figure 2), and allows users to edit the chain by adding, removing, or reconnecting nodes. (B) The Node View supports implementing, improving, and testing each individual node, e.g., editing prompts for LLM nodes. PromptChainer also supports
+            running the chain end-to-end (C) \cite{wu2022promptchainer}.}}
+\end{figure}
+
+\hfill
+
+6) Automatic Prompt Engineering (APE): Automatic Prompt Engineering (APE) \cite{zhou2023large} aims to automate the creation of prompts for Large Language Models (LLMs). APE seeks to streamline and optimize the prompt design process by leveraging the capabilities of LLMs themselves to generate and evaluate prompts. This approach involves using LLMs in a self-referential manner, where the model generates, scores, and refines prompts. By recursively utilizing LLMs in this way, APE facilitates the creation of high-quality prompts that are more likely to elicit the desired response or outcome.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=8cm,keepaspectratio=true]{apen.png}
+    \caption{\it{Automatic Prompt Engineer framework \cite{zhou2023large}.}}
+\end{figure}
