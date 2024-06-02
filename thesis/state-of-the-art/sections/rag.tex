@@ -88,3 +88,50 @@ Modern neural models, such as those based on BERT, capture complex semantic rela
 
 \textbf{Hybrid Models:}
 Hybrid models combine multiple retrieval approaches, such as TF-IDF with neural models, leveraging the strengths of each method. By balancing simplicity and effectiveness, hybrid models offer robustness across various scenarios, making them useful for comprehensive retrieval systems that need to perform well in a range of conditions.
+
+\subsection{Embeddings and Vector Databases for Retrieval in RAG}
+
+In addition to selecting an appropriate retrieval model, leveraging embeddings and vector databases can significantly enhance the performance and efficiency of the retrieval component. Vector embeddings are a fundamental concept in modern information retrieval and natural language processing. They transform textual data into numerical vectors, enabling computers to understand and manipulate text data within a mathematical, geometric space. These embeddings capture semantic and contextual relationships between words, documents, and other textual entities, making them highly valuable in various applications, including the retrieval component of Retrieval-Augmented Generation (RAG). By employing embeddings and vector databases, the retrieval process becomes more efficient and effective, providing more accurate and contextually relevant results.
+
+\subsubsection*{Vector Embeddings}
+
+Vector embeddings represent words, phrases, sentences, or even entire documents as points in a high-dimensional vector space. The key idea is to map each textual element into a vector in such a way that semantically similar elements are located close to each other in this space, while dissimilar elements are further apart. This geometric representation facilitates similarity calculations, clustering, and other operations \cite{practicalrag}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{embeddings.png}
+    \caption[Word Embeddings]{
+        \it{Words plotted in 3-dimensional space. Embeddings can have hundreds or thousands of dimensions-too many for humans to visualize \cite{googlevectorembeddings}.}
+    }
+\end{figure}
+
+Examples of Vector Embeddings:
+
+\begin{itemize}
+    \item \textbf{Word Embeddings (Word2Vec, GloVe):} Word embeddings represent individual words as vectors. For example, “king” and “queen” may be represented as vectors that are close together in the vector space because they share similar semantic properties.
+    \item \textbf{Document Embeddings (Doc2Vec, BERT):} Document embeddings map entire documents (such as PDFs) into vectors. Two documents discussing similar topics will have embeddings that are close in the vector space.
+\end{itemize}
+
+\subsubsection*{Vector Databases and Their Role in Enhancing Retrieval}
+
+Vector databases, also known as similarity search engines or vector index databases, play a crucial role in the retrieval component of RAG by efficiently storing and retrieving these vector embeddings. They are specialized databases designed for retrieving vectors based on similarity, making them well-suited for scenarios where similarity between data points needs to be calculated quickly and accurately.
+
+How Vector Databases Enhance Retrieval in RAG:
+
+\textbf{Fast Retrieval:} Vector databases utilize indexing structures specifically optimized for similarity searches. They employ algorithms such as approximate nearest neighbor (ANN) search to quickly identify the most similar vectors, even within large datasets containing numerous documents.
+
+\textbf{Scalability:} Vector databases are designed to efficiently scale as the document corpus expands. This ensures that retrieval performance remains consistent, regardless of the dataset's size, maintaining high efficiency and speed.
+
+\textbf{Advanced Similarity Scoring:} These databases provide a variety of similarity metrics, including cosine similarity and the Jaccard index. This allows for fine-tuning the relevance ranking of retrieved documents based on specific requirements, enhancing the precision of search results.
+
+\textbf{Integration with Retrieval Models:} Vector databases can be seamlessly integrated into existing retrieval systems. They complement retrieval models like TF-IDF, BM25, and neural ranking models by offering an efficient method for selecting candidate documents based on vector similarity, thereby improving the overall retrieval process.
+
+These factors have led to the emergence of numerous new vector databases. Choosing one of these databases can create long-term dependencies and have significant impacts on your system. Ideally, a vector database should exhibit strong scalability while maintaining cost-efficiency and minimizing latency. Some of these vector databases include Qdrant\footnote{\url{https://qdrant.tech/}}, Weaviate\footnote{\url{https://weaviate.io/}}, Pinecone\footnote{\url{https://www.pinecone.io/}}, pgvector\footnote{\url{https://github.com/pgvector/pgvector}}, Milvus\footnote{\url{https://milvus.io/}}, and Chroma\footnote{\url{https://www.trychroma.com/}}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{vectordbs.png}
+    \caption{
+        \it{Vector databases comparison \cite{practicalrag}.}
+    }
+\end{figure}
