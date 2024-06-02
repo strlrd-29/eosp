@@ -69,3 +69,22 @@ Post-Retrieval Process. Once relevant context is retrieved, it is crucial to int
 \subsubsection*{Modular RAG}
 
 The modular RAG architecture advances beyond the earlier RAG paradigms, providing enhanced adaptability and versatility. It incorporates various strategies to improve its components, such as adding a search module for similarity searches and fine-tuning the retriever. Innovations like restructured RAG modules \cite{yu2023generate} and rearranged RAG pipelines \cite{shao2023enhancing} have been developed to address specific challenges. The trend towards a modular RAG approach is becoming increasingly common, supporting both sequential processing and integrated end-to-end training across its components. Despite its distinctiveness, Modular RAG builds on the foundational principles of Advanced and Naive RAG, demonstrating a progression and refinement within the RAG family.
+
+\subsection{Retrieval Models for Document Search}
+
+Selecting the appropriate retrieval model is critical for ensuring efficient and accurate document search and ranking in response to user queries. Here are some key retrieval models and considerations:
+
+\textbf{TF-IDF (Term Frequency-Inverse Document Frequency):}
+TF-IDF is a classical retrieval model that calculates the importance of terms within a document relative to a corpus. It is straightforward to implement and particularly effective for certain tasks, especially within smaller or less complex datasets. This model is suitable for straightforward keyword-based search tasks, offering a simple yet effective approach for basic retrieval needs.
+
+\textbf{BM25:}
+BM25 builds upon TF-IDF by accounting for document length and term saturation, making it an improved version of its predecessor. It handles term frequency variations and document length normalization better, often resulting in more effective retrieval for modern tasks. BM25 is ideal for general-purpose search engines and more sophisticated retrieval needs, providing a robust solution for a variety of applications.
+
+\textbf{Vector Space Models:}
+These models represent documents and queries as vectors in a high-dimensional space, using metrics like cosine similarity for ranking. Implementations such as Latent Semantic Analysis (LSA) and Word Embeddings (e.g., Word2Vec) can capture semantic similarities and relationships between terms. This makes vector space models effective for tasks that require understanding nuanced meanings and context within documents.
+
+\textbf{Neural Ranking Models:}
+Modern neural models, such as those based on BERT, capture complex semantic relationships and provide deep understanding of context and nuances. These models can be fine-tuned for specific tasks and domains, making them highly effective for advanced retrieval needs. Neural ranking models are particularly suitable for tasks requiring sophisticated semantic comprehension and detailed query resolution.
+
+\textbf{Hybrid Models:}
+Hybrid models combine multiple retrieval approaches, such as TF-IDF with neural models, leveraging the strengths of each method. By balancing simplicity and effectiveness, hybrid models offer robustness across various scenarios, making them useful for comprehensive retrieval systems that need to perform well in a range of conditions.
