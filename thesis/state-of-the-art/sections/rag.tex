@@ -128,10 +128,47 @@ How Vector Databases Enhance Retrieval in RAG:
 
 These factors have led to the emergence of numerous new vector databases. Choosing one of these databases can create long-term dependencies and have significant impacts on your system. Ideally, a vector database should exhibit strong scalability while maintaining cost-efficiency and minimizing latency. Some of these vector databases include Qdrant\footnote{\url{https://qdrant.tech/}}, Weaviate\footnote{\url{https://weaviate.io/}}, Pinecone\footnote{\url{https://www.pinecone.io/}}, pgvector\footnote{\url{https://github.com/pgvector/pgvector}}, Milvus\footnote{\url{https://milvus.io/}}, and Chroma\footnote{\url{https://www.trychroma.com/}}.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{vectordbs.png}
-    \caption{
-        \it{Vector databases comparison \cite{practicalrag}.}
-    }
-\end{figure}
+\subsection{Challenges of Retrieval-Augmented Generation}
+
+The adoption of Retrieval-Augmented Generation (RAG) marks a significant advancement in natural language processing and information retrieval. However, like any complex AI system, RAG presents a set of challenges that must be addressed to fully harness its potential. This section explores some of the key challenges associated with RAG.
+
+\subsubsection*{Data Quality and Relevance}
+
+RAG heavily relies on the availability of high-quality and relevant data for both retrieval and generation tasks. Challenges in this area include:
+
+\begin{itemize}
+    \item \textbf{Noisy Data:} Incomplete, outdated, or inaccurate data sources can lead to the retrieval of irrelevant information, negatively impacting the quality of generated responses.
+
+    \item \textbf{Bias and Fairness:} Biases present in training data may result in biased retrieval and generation, perpetuating stereotypes or misinformation.
+\end{itemize}
+
+\subsubsection*{Integration Complexity}
+
+Integrating retrieval and generation components seamlessly is a complex task, as it involves bridging different architectures and models. Challenges include:
+
+\begin{itemize}
+    \item \textbf{Model Compatibility}: Ensuring that the retrieval and generation models work harmoniously, particularly when combining traditional methods (e.g., TF-IDF) with neural models (e.g., GPT-3).
+
+    \item \textbf{Latency and Efficiency:} Balancing the need for real-time responsiveness with the computational resources required for both retrieval and generation.
+\end{itemize}
+
+
+\subsubsection*{Scalability}
+
+Scaling RAG systems to handle large volumes of data and user requests presents several challenges:
+
+\begin{itemize}
+    \item \textbf{Indexing Efficiency:} As the document corpus grows, maintaining an efficient and up-to-date index becomes crucial for ensuring retrieval speed.
+
+    \item \textbf{Model Scaling:} Deploying large-scale neural models for both retrieval and generation demands substantial computational resources.
+\end{itemize}
+
+\subsubsection*{Domain Adaptation}
+
+Adapting RAG systems to specific domains or industries can be complex:
+
+\begin{itemize}
+    \item \textbf{Domain-Specific Knowledge:} Incorporating industry-specific knowledge and terminology into retrieval and generation.
+
+    \item \textbf{Training Data Availability:} Ensuring the availability of domain-specific training data for fine-tuning models.
+\end{itemize}
