@@ -1,0 +1,29 @@
+services:
+  backend:
+    image: backend:1.0
+    container_name: backend
+    env_file:
+      - .env
+    build:
+      context: .
+    volumes:
+      - chroma_db_data:/app/chroma
+      - ./src:/app/src
+    ports:
+      - "8000:8000"
+
+  db:
+    image: "mongo:7.0"
+    container_name: db
+    volumes:
+      - db_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER?}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS?}
+    command: --quiet --logpath /dev/null
+
+volumes:
+  chroma_db_data:
+    name: chroma_db_data
+  db_data:
+    name: db_data
