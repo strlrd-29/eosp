@@ -1,0 +1,17 @@
+\chapter{Proposed Solution}
+
+In this chapter, we delve into the implementation details of our proposed solution, designed to enhance the efficiency and accuracy of information retrieval through a Local Retrieval-Augmented Generation (RAG) agent. Our solution leverages a variety of advanced technologies, including Next.js, Vercel AI SDK, Langchain, FastAPI, Ollama, and the OpenAI API. By integrating these tools, our aim is to create a robust, scalable, and efficient system capable of serving both local and web-based information needs.
+
+In addition to LLaMA3, we will experiment with other open-source language models (LLMs) and utilize the OpenAI API to test the capabilities of GPT-4. This multi-model approach will allow us to compare and contrast the performance of different LLMs, ensuring that our solution is both versatile and effective across various use cases.
+
+Throughout this chapter, we will provide a comprehensive overview of the data flow, from the initial user query to the final generated answer, elucidating the intricacies of our system's workflow. Finally, we will address the challenges encountered and the solutions devised to overcome them.
+
+\section{Problem Definition}
+
+In the era of rapid information growth and increasing complexity of queries, traditional question-answering systems often struggle to provide comprehensive and accurate responses. These systems frequently rely on a single approach, such as keyword-based retrieval or language model generation, which can lead to suboptimal results. Furthermore, many existing systems are limited to a predefined knowledge base or corpus, restricting their ability to adapt and incorporate the latest information from the vast expanse of the internet.
+
+Traditional question-answering approaches may also suffer from issues such as hallucinations \cite{zhang2023sirens} or failing to address the core aspects of a query. There is a need for a more advanced and adaptive question-answering system that can leverage the strengths of various retrieval and generation techniques, while also accounting for potential limitations or errors.
+
+The goal of our project is to develop a Local RAG (Retrieval-Augmented Generation) agent with LLaMA3 and other open source LLMs that combines ideas from several state-of-the-art RAG papers. This agent aims to provide more accurate and comprehensive answers to a wide range of queries by intelligently routing queries, utilizing fallback mechanisms, and incorporating self-correction capabilities. The Local RAG agent will leverage the power of large language models like LLaMA3, while also incorporating retrieval techniques to ground the responses in relevant information sources. Additionally, the agent will have the ability to fall back to web search when the available information is insufficient, and self-correct its responses to address potential hallucinations or incomplete answers.
+
+By combining these different approaches, the Local RAG agent aims to overcome the limitations of traditional question-answering systems, providing users with more reliable, up-to-date, and context-aware responses.
