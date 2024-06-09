@@ -4,26 +4,52 @@ services:
     container_name: backend
     env_file:
       - .env
-    build:
-      context: .
+    build: .
     volumes:
       - chroma_db_data:/app/chroma
       - ./src:/app/src
     ports:
       - "8000:8000"
+    networks:
+      - net
 
   db:
     image: "mongo:7.0"
     container_name: db
     volumes:
       - db_data:/data/db
+    networks:
+      - net
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${DB_USER?}
       MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS?}
     command: --quiet --logpath /dev/null
+
+  ollama:
+    image: "ollama/ollama"
+    container_name: ollama
+    volumes:
+      - ollama:/root/.ollama
+    ports:
+      - "11434:11434"
+    networks:
+      - net
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 3
+              capabilities: [gpu]
 
 volumes:
   chroma_db_data:
     name: chroma_db_data
   db_data:
     name: db_data
+  ollama:
+    name: ollama
+
+networks:
+  net:
+    external: false
