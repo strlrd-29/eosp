@@ -21,6 +21,7 @@
 
 \include{title/title}
 \vspace{3cm}
+\setcode{utf8}
 
 \pagenumbering{roman}
 
@@ -53,18 +54,6 @@
 \let\cleardoublepage\clearpage
 \addcontentsline{toc}{section}{List of Figures}
 \listoffigures
-
-%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%  List of Tables  %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%
-% \addcontentsline{toc}{section}{List of Tables}
-% \listoftables
-
-%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%  List of Listings  %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%
-% \addcontentsline{toc}{section}{List of Listings}
-% \lstlistoflistings
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  Acronyms  %%%
@@ -103,5 +92,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \printbibliography %Prints bibliography
 
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  Appendix %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{appendix/appendix}
 
 \end{document}

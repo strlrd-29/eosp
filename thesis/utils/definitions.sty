@@ -2,6 +2,8 @@
 
 \usepackage[left=1.4in,right=1.3in,top=1.1in,bottom=1.1in,includefoot,includehead,headheight=13.6pt]{geometry}
 \usepackage{float}
+\usepackage{arabtex}
+\usepackage{utf8}
 
 \usepackage[absolute]{textpos}
 \usepackage{fancyhdr}
@@ -213,14 +215,32 @@ literate=
 {]}{{{\color{delim}{]}}}}{1},
 }
 
-\lstdefinestyle{base}{
-    basicstyle=\scriptsize,
-    emptylines=1,
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
     breaklines=true,
-    moredelim=**[is][\color{red}]{@}{@},
-    moredelim=**[is][\color{olive}]{!}{!},
-    moredelim=**[is][\color{blue}]{*}{*},
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2
 }
+
+\lstset{style=mystyle}
+
 
 \renewcommand{\ttdefault}{pcr}
 \lstdefinelanguage{owl} {

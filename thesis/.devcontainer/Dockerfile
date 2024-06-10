@@ -20,6 +20,7 @@ RUN apt-get update && apt-get -y upgrade \
     texlive-latex-extra \
     texlive-bibtex-extra \
     texlive-lang-english \
+    texlive-lang-arabic \ 
     texlive-science \
     biber chktex latexmk make python3-pygments python3-pkg-resources aspell aspell-en
 

@@ -68,6 +68,8 @@ Although the previously described tokenizers offer significant advantages over w
 
 \subsection{Positional Encoding}
 
+Positional encoding is a technique used in transformer models to provide the model with information about the position of tokens in a sequence. This is crucial because transformer models process tokens in parallel, lacking inherent knowledge of token order. Positional encoding ensures that the model can differentiate between tokens based on their position, which is essential for tasks where word order matters, such as language translation and text generation
+
 \subsubsection*{Absolute Positional Embeddings}
 
 Absolute Positional Embeddings (APE) \cite{vaswani2023attention} has been used in the original Transformer model to preserve the sequence order information. Consequently, positional information of words is added to the input embeddings at the base of both the encoder and decoder stacks. Various options exist for positional encodings, including learned or fixed methods. In the vanilla Transformer, sine and cosine functions are utilized for this purpose. However, the main drawback of using APE in Transformers is its limitation to a fixed number of tokens. Moreover, APE does not account for the relative distances between tokens.
