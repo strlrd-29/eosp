@@ -8,6 +8,7 @@ services:
     volumes:
       - chroma_db_data:/app/chroma
       - ./src:/app/src
+      - ./uploads:/app/uploads
     ports:
       - "8000:8000"
     networks:
