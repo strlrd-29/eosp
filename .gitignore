@@ -3,6 +3,7 @@ thesis/out/*
 *.pdf
 
 !thesis/out/main.pdf
+!thesis/out/presentation.pdf
 
 *.log
 
