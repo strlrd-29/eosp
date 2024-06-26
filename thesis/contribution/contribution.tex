@@ -22,10 +22,13 @@ By combining these different approaches, the Local RAG agent aims to overcome th
 
 \section{Solution Overview}
 
+In this section, we will thoroughly examine the overall architecture of the solution, detailing its various components and fundamental elements, and emphasizing the function of each. Figure \ref{fig:architecture} presents an illustration of the solution's architecture.
+
 \begin{figure}[!ht]
     \centering
     \includegraphics[width=\linewidth]{architecture.png}
     \caption{\it{Proposed solution architecture.}}
+    \label{fig:architecture}
 \end{figure}
 
 \subsection{High-Level Architecture}
@@ -113,20 +116,6 @@ Once the relevant documents are retrieved, they undergo a grading process using 
 
 If any document is found irrelevant during the grading process, the system flags it and prepares to use the fallback web search mechanism. This step is crucial to maintain the quality and relevance of the information provided to the user.
 
-\subsection{Model Interaction with Ollama}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{ollama.png}
-    \caption{
-        \it{Llama3's page on ollama website.}
-    }
-\end{figure}
-
-With the relevant and graded documents in hand, the system then interacts with the LLaMA3 models served locally using Ollama. Ollama ensures low-latency and efficient model interaction by managing the lifecycle of the models and ensuring they are readily available for processing incoming queries.
-
-The LLaMA3 model takes the query and the graded documents as input to generate a coherent and relevant answer. This model interaction is critical as it synthesizes the information from the documents and produces a response tailored to the user's query. By using locally served models, the system minimizes latency and enhances performance, providing users with quick and accurate responses.
-
 \subsection{Answer Validation and Correction}
 
 \begin{figure}[H]
@@ -162,6 +151,20 @@ The user interaction ends here, but the system continues to monitor and log the 
 Throughout the entire workflow, LangSmith is used to trace and log the outputs of the LLM. This includes logging the initial query, the retrieved documents, the generated answers, and any corrections made. LangSmith provides tools to monitor the performance of the system, identifying bottlenecks and areas for improvement.
 
 This continuous monitoring and logging are crucial for maintaining the system's performance and reliability. By analyzing the logs, we can pinpoint issues and optimize the system to handle future queries more efficiently. LangSmith's integration enhances the system's ability to provide accurate and relevant responses while also allowing for continuous improvement.
+
+\subsection{Model Interaction with Ollama}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{ollama.png}
+    \caption{
+        \it{Llama3's page on ollama website.}
+    }
+\end{figure}
+
+With the relevant and graded documents in hand, the system then interacts with the LLaMA3 models served locally using Ollama. Ollama ensures low-latency and efficient model interaction by managing the lifecycle of the models and ensuring they are readily available for processing incoming queries.
+
+The LLaMA3 model takes the query and the graded documents as input to generate a coherent and relevant answer. This model interaction is critical as it synthesizes the information from the documents and produces a response tailored to the user's query. By using locally served models, the system minimizes latency and enhances performance, providing users with quick and accurate responses.
 
 \section{Challenges and Solutions}
 
