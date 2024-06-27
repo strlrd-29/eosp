@@ -86,6 +86,22 @@ Our solution aims to develop a Local Retrieval-Augmented Generation (RAG) agent 
 
 The workflow of our Local Retrieval-Augmented Generation (RAG) agent involves several key steps, from the initial query submission to the final generation and validation of answers. Here, we delve into each step to provide a comprehensive understanding of the process.
 
+\subsection{User Input}
+
+The user begins by initiating a chat session, creating a space where they can interact with the system. During this session, the user is prompted to input a list of URLs and optional PDFs. These documents can come from a variety of sources, such as documentation websites, blog posts, or research papers. The inclusion of diverse document types ensures a comprehensive set of data for the system to work with. By submitting these documents, the user sets the stage for the system to ingest and process the information, converting it into a format that can be efficiently queried later.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{create-chat.png}
+    \caption{
+        \it{User Input}
+    }
+\end{figure}
+
+\subsection{Document Processing}
+
+Once the user has submitted the URLs and PDFs, the system moves on to the document processing stage. Each document is converted into embeddings, which are dense vector representations of the text content. These embeddings capture the semantic meaning of the documents, enabling the system to perform efficient similarity searches. After conversion, the embeddings are stored in a vector database. This database serves as a repository that allows the system to quickly retrieve relevant documents in response to user queries, facilitating a streamlined and efficient search process.
+
 \subsection{Question Routing}
 
 \begin{figure}[H]
@@ -140,6 +156,11 @@ The user interaction ends here, but the system continues to monitor and log the 
 
 \subsection{Logging and Monitoring with LangSmith}
 
+
+Throughout the entire workflow, LangSmith is used to trace and log the outputs of the LLM. This includes logging the initial query, the retrieved documents, the generated answers, and any corrections made. LangSmith provides tools to monitor the performance of the system, identifying bottlenecks and areas for improvement.
+
+This continuous monitoring and logging are crucial for maintaining the system's performance and reliability. By analyzing the logs, we can pinpoint issues and optimize the system to handle future queries more efficiently. LangSmith's integration enhances the system's ability to provide accurate and relevant responses while also allowing for continuous improvement.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{langsmith.png}
@@ -148,11 +169,12 @@ The user interaction ends here, but the system continues to monitor and log the 
     }
 \end{figure}
 
-Throughout the entire workflow, LangSmith is used to trace and log the outputs of the LLM. This includes logging the initial query, the retrieved documents, the generated answers, and any corrections made. LangSmith provides tools to monitor the performance of the system, identifying bottlenecks and areas for improvement.
-
-This continuous monitoring and logging are crucial for maintaining the system's performance and reliability. By analyzing the logs, we can pinpoint issues and optimize the system to handle future queries more efficiently. LangSmith's integration enhances the system's ability to provide accurate and relevant responses while also allowing for continuous improvement.
-
 \subsection{Model Interaction with Ollama}
+
+
+With the relevant and graded documents in hand, the system then interacts with the LLaMA3 models served locally using Ollama. Ollama ensures low-latency and efficient model interaction by managing the lifecycle of the models and ensuring they are readily available for processing incoming queries.
+
+The LLaMA3 model takes the query and the graded documents as input to generate a coherent and relevant answer. This model interaction is critical as it synthesizes the information from the documents and produces a response tailored to the user's query. By using locally served models, the system minimizes latency and enhances performance, providing users with quick and accurate responses.
 
 \begin{figure}[H]
     \centering
@@ -161,10 +183,6 @@ This continuous monitoring and logging are crucial for maintaining the system's 
         \it{Llama3's page on ollama website.}
     }
 \end{figure}
-
-With the relevant and graded documents in hand, the system then interacts with the LLaMA3 models served locally using Ollama. Ollama ensures low-latency and efficient model interaction by managing the lifecycle of the models and ensuring they are readily available for processing incoming queries.
-
-The LLaMA3 model takes the query and the graded documents as input to generate a coherent and relevant answer. This model interaction is critical as it synthesizes the information from the documents and produces a response tailored to the user's query. By using locally served models, the system minimizes latency and enhances performance, providing users with quick and accurate responses.
 
 \section{Challenges and Solutions}
 
@@ -193,6 +211,51 @@ Developing and implementing a Local Retrieval-Augmented Generation (RAG) agent u
 \textbf{Challenge:} Monitoring the performance and behavior of the system in real-time, and logging all interactions to identify and troubleshoot issues, is crucial for maintaining reliability.
 
 \textbf{Solution:} LangSmith was integrated into the system to provide comprehensive logging and monitoring capabilities. LangSmith traces and logs every interaction, from the initial query to the final answer delivery. These logs are analyzed to identify performance bottlenecks and areas for improvement. Real-time monitoring dashboards were set up to track key performance metrics, allowing for proactive maintenance and optimization of the system.
+
+\subsection*{Example queries}
+
+The user has initiated a chat session and inputted four links to the Coolify documentation website. These links cover various aspects of Coolify, including its features, installation, usage, and FAQs.
+
+\subsubsection*{Query Routed to Vector Store}
+
+\textbf{User Query:} "What is Coolify?"
+
+\begin{itemize}
+    \item Routing: The system determines that the query is related to the indexed documents about Coolify.
+    \item Retrieve Documents: The system retrieves relevant documents from the vector store. These documents include sections of the Coolify documentation that provide an overview of the platform.
+    \item Grade Documents: The retrieved documents are graded for their relevance to the query, ensuring that the most pertinent information is selected.
+    \item Generate Answer: An answer is generated based on the graded documents. The system synthesizes information from the relevant sections to provide a coherent and informative response.
+    \item Check for Hallucinations: The generated answer is checked for any inaccuracies or fabricated information.
+    \item Provide Answer: The system responds that Coolify is a self-hostable, open-source platform designed to simplify the deployment and management of applications.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{coolify.png}
+    \caption{
+        \it{'What is Coolify?' question results.}
+    }
+\end{figure}
+
+\subsubsection*{Query Routed to Web Search}
+
+\textbf{User Query:} "What was the score of Portugal vs Georgia?"
+
+\begin{itemize}
+    \item Routing: The system identifies that this query is unrelated to the Coolify documentation.
+    \item Web Search: The system performs a web search to find the latest and most accurate information about the match between Portugal and Georgia.
+    \item Retrieve and Grade: The search results are retrieved and graded for their relevance to the query, ensuring that the most reliable sources are prioritized.
+    \item Generate Final Answer: A final answer is generated based on the web search results, synthesizing the information to provide an accurate match score.
+    \item Provide Answer: The system provides the match score, ensuring the user receives up-to-date and accurate information about the Portugal vs Georgia game.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth,height=6cm,keepaspectratio=true]{sui.png}
+    \caption{
+        \it{'What was the score of Portugal vs Georgia?' question results.}
+    }
+\end{figure}
 
 \section{Conclusion}
 
