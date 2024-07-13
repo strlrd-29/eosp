@@ -5,6 +5,8 @@
 
 \subsection{Retrieval Grader}
 
+This prompt is used to assess the relevance of a retrieved document in response to a user's question. The grader determines if the document contains keywords related to the question and provides a binary score ('yes' or 'no') as a JSON output.
+
 \begin{lstlisting}[language=Python, caption=\it{Prompt used for the retrieval grader.}]
     prompt = PromptTemplate(
         template="""<|begin_of_text|><|start_header_id|>system<|end_header_id|> You are a grader assessing relevance 
@@ -21,6 +23,8 @@
 
 \subsection{Answer Generation}
 
+This prompt is designed to generate answers to user questions using retrieved context. The assistant uses the provided context to form a response, and if the answer is unknown, it states that clearly.
+
 
 \begin{lstlisting}[language=Python, caption=\it{Prompt used for answer generation.}]
     prompt = PromptTemplate(
@@ -34,6 +38,8 @@
 \end{lstlisting}
 
 \subsection{Hallucination Grader}
+
+This prompt is used to evaluate whether an answer is grounded in a set of provided facts. The grader gives a binary score ('yes' or 'no') indicating if the answer is supported by the facts, with the output formatted as a JSON.
 
 \begin{lstlisting}[language=Python, caption=\it{Prompt used for the hallucination grader.}]
     prompt = PromptTemplate(
@@ -49,6 +55,8 @@
 
 \subsection{Answer Grader}
 
+This prompt assesses the usefulness of an answer in resolving a user's question. The grader provides a binary score ('yes' or 'no') based on the utility of the answer, formatted as a JSON output.
+
 \begin{lstlisting}[language=Python, caption=\it{Prompt used for the hallucination grader.}]
     prompt = PromptTemplate(
         template="""<|begin_of_text|><|start_header_id|>system<|end_header_id|> You are a grader assessing whether an answer is useful to resolve a question. Give a binary score 'yes' or 'no' to indicate whether the answer is useful to resolve a question. Provide the binary score as a JSON with a single key 'score' and no preamble or explanation. <|eot_id|><|start_header_id|>user<|end_header_id|> Here is the answer:
@@ -63,6 +71,8 @@
 \clearpage
 
 \subsection{Router}
+
+This prompt is used to determine the appropriate data source for a user question, either a vector store or web search. It provides a binary choice \('web_search' or 'vectorstore'\) based on the keywords in the question, with the output formatted as a JSON.
 
 \begin{lstlisting}[language=Python, caption=\it{Prompt used for the hallucination grader.}]
     prompt = PromptTemplate(
