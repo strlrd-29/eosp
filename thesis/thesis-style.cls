@@ -504,7 +504,6 @@
 \if@compatibility
     \newenvironment{titlepage}
     {%
-        \cleardoublepage
         \if@twocolumn
             \@restonecoltrue\onecolumn
         \else
@@ -518,7 +517,6 @@
 \else
     \newenvironment{titlepage}
     {%
-        \cleardoublepage
         \if@twocolumn
             \@restonecoltrue\onecolumn
         \else

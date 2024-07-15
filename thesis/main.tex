@@ -21,21 +21,22 @@
 \begin{document}
 
 \include{title/title}
-\vspace{3cm}
 \setcode{utf8}
-
-\pagenumbering{roman}
-
 \include{title/separator}
+
+\include{title/title}
+\include{title/title-fr}
+
+\pagenumbering{gobble}
+
 \include{title/basmalah}
 \include{title/separator}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  Aknowledgment  %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \let\cleardoublepage\clearpage
-\addcontentsline{toc}{section}{Acknowledgments}
-\markboth{Acknowledgments}{Acknowledgments}
 \include{acknowledgments/aknowledgments}
 \include{title/separator}
 
@@ -43,8 +44,14 @@
 %%%  Abstract  %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \input{abstract/abstract}
-
 \tableofcontents
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%  Acronyms  %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\addcontentsline{toc}{section}{Abbreviations}
+\markboth{Acronyms}{Acronyms}
+\include{acronyms/acronyms}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  List of Figures  %%%
@@ -53,12 +60,6 @@
 \addcontentsline{toc}{section}{List of Figures}
 \listoffigures
 
-%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%  Acronyms  %%%
-%%%%%%%%%%%%%%%%%%%%%%%%%
-\addcontentsline{toc}{section}{Acronyms}
-\markboth{Acronyms}{Acronyms}
-\include{acronyms/acronyms}
 \mainmatter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -94,6 +95,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%
 %%%  Bibliography %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%
+\addcontentsline{toc}{chapter}{Bibliography}
 \printbibliography %Prints bibliography
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
