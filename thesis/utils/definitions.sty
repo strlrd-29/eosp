@@ -61,12 +61,14 @@
 % Sets fancy header and footer
 \pagestyle{fancy}
 % Delete current footer settings
-\fancyfoot{}
+\fancyhead{}
+\cfoot{\thepage}
+% \fancyfoot{}
 % Page number (boldface) in left on even
-\fancyhead[LE,RO]{\bfseries\thepage}
+% \fancyhead[R]{\bfseries\thepage}
 % pages and right on odd pages
-\fancyhead[RE]{\small\bfseries\nouppercase{\leftmark}}      % Chapter in the right on even pages
-\fancyhead[LO]{\small\bfseries\nouppercase{\rightmark}}     % Section in the left on odd pages
+\fancyhead[L]{\small\bfseries\nouppercase{\leftmark}}      % Chapter in the right on even pages
+% \fancyhead[LO]{\small\bfseries\nouppercase{\rightmark}}     % Section in the left on odd pages
 \let\headruleORIG\headrule
 \renewcommand{\headrule}{\color{black} \headruleORIG}
 \renewcommand{\headrulewidth}{1.0pt}
@@ -74,7 +76,7 @@
 
 \fancypagestyle{plain}{
     \fancyhead{}
-    \fancyfoot{}
+    \cfoot{\thepage}
     \renewcommand{\headrulewidth}{0pt}
 }
 
